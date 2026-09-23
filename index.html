@@ -7,375 +7,697 @@
     <title>Royal Riders | Motorcycle Website</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #111;
-            color: white;
-        }
+:root {
+    --bg: #07111f;
+    --bg2: #0b1b2d;
+    --card: rgba(15, 31, 49, 0.92);
+    --blue: #12395b;
+    --orange: #ff9d00;
+    --orange2: #ff6a00;
+    --white: #f5f7fa;
+    --muted: #aab7c7;
+    --border: rgba(255, 157, 0, 0.25);
+}
 
-        /* NAVBAR */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #090909;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 7%;
-            border-bottom: 1px solid #333;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+}
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
+/* =========================
+   NAVIGATION
+========================= */
 
-        .logo span {
-            color: #d71920;
-        }
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            transition: 0.3s;
-        }
+    padding: 18px 7%;
 
-        nav a:hover {
-            color: #d71920;
-        }
+    background: rgba(4, 13, 24, 0.88);
+    backdrop-filter: blur(15px);
 
-        /* HERO */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            padding: 60px 7%;
-            background:
-                linear-gradient(90deg, rgba(0,0,0,0.95), rgba(0,0,0,0.35)),
-                url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzExMSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzIwMjAyMCIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPlJJREUgWU9VUiBMRUdFTkQ8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+");
-            background-size: cover;
-            background-position: center;
-        }
+    border-bottom: 1px solid rgba(255, 157, 0, 0.18);
+}
 
-        .hero-content {
-            max-width: 650px;
-        }
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
 
-        .hero h1 {
-            font-size: clamp(45px, 7vw, 85px);
-            line-height: 1;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+.logo span {
+    color: var(--orange);
+}
 
-        .hero h1 span {
-            color: #d71920;
-        }
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+}
 
-        .hero p {
-            color: #ddd;
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+nav a {
+    color: #e9eef5;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
 
-        .btn {
-            display: inline-block;
-            background: #d71920;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+nav a:hover {
+    color: var(--orange);
+}
 
-        .btn:hover {
-            background: #a90f15;
-            transform: translateY(-2px);
-        }
+/* =========================
+   HERO
+========================= */
 
-        /* GENERAL */
-        section {
-            padding: 80px 7%;
-        }
+.hero {
+    min-height: 92vh;
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+    display: flex;
+    align-items: center;
 
-        .section-title h2 {
-            font-size: 40px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
+    padding: 70px 7%;
 
-        .section-title p {
-            color: #aaa;
-        }
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 12, 22, 0.97) 0%,
+            rgba(3, 12, 22, 0.82) 38%,
+            rgba(3, 12, 22, 0.25) 75%
+        ),
+        url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=2000&q=90");
 
-        /* ABOUT */
-        .about {
-            background: #181818;
-        }
+    background-size: cover;
+    background-position: center;
 
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
+    position: relative;
+}
 
-        .about img {
-            width: 100%;
-            border-radius: 8px;
-        }
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
 
-        .about-text h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
+    background:
+        linear-gradient(
+            180deg,
+            transparent 70%,
+            var(--bg) 100%
+        );
 
-        .about-text p {
-            color: #bbb;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
+    pointer-events: none;
+}
 
-        /* MOTORCYCLES */
-        .bike-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+.hero-content {
+    max-width: 680px;
+    position: relative;
+    z-index: 2;
+}
 
-        .bike-card {
-            background: #1b1b1b;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #292929;
-            transition: 0.3s;
-        }
+.hero h1 {
+    font-size: clamp(52px, 8vw, 95px);
+    line-height: 0.95;
+    margin-bottom: 25px;
 
-        .bike-card:hover {
-            transform: translateY(-8px);
-            border-color: #d71920;
-        }
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
 
-        .bike-card img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
+.hero h1 span {
+    color: var(--orange);
+    text-shadow: 0 0 25px rgba(255, 157, 0, 0.35);
+}
 
-        .bike-info {
-            padding: 22px;
-        }
+.hero p {
+    color: #d5deea;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 570px;
+    margin-bottom: 32px;
+}
 
-        .bike-info h3 {
-            font-size: 25px;
-            margin-bottom: 10px;
-        }
+/* =========================
+   BUTTON
+========================= */
 
-        .bike-info p {
-            color: #aaa;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
+.btn {
+    display: inline-block;
 
-        .price {
-            color: #d71920;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
+    background: linear-gradient(
+        135deg,
+        var(--orange),
+        var(--orange2)
+    );
 
-        /* COMPARISON */
-        .compare {
-            background: #181818;
-        }
+    color: #07111f;
 
-        .table-container {
-            overflow-x: auto;
-        }
+    padding: 15px 30px;
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #101010;
-        }
+    border-radius: 50px;
 
-        th, td {
-            padding: 18px;
-            border: 1px solid #333;
-            text-align: center;
-        }
+    text-decoration: none;
 
-        th {
-            background: #d71920;
-        }
+    font-weight: 900;
 
-        td {
-            color: #ddd;
-        }
+    border: none;
 
-        /* GALLERY */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
+    cursor: pointer;
 
-        .gallery img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 6px;
-            transition: 0.3s;
-        }
+    box-shadow:
+        0 8px 25px rgba(255, 106, 0, 0.25);
 
-        .gallery img:hover {
-            transform: scale(1.03);
-        }
+    transition: 0.3s;
+}
 
-        /* TEST RIDE */
-        .test-ride {
-            background:
-                linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
-                url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzEwMTgyMCIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI1MjUyNSIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPkJPT0sgWU9VUiBURVNUIFJJREU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+");
-            background-size: cover;
-            background-position: center;
-        }
+.btn:hover {
+    transform: translateY(-4px) scale(1.03);
 
-        .form {
-            max-width: 700px;
-            margin: auto;
-            background: rgba(20,20,20,0.95);
-            padding: 35px;
-            border-radius: 8px;
-        }
+    box-shadow:
+        0 12px 35px rgba(255, 157, 0, 0.45);
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+/* =========================
+   GENERAL SECTIONS
+========================= */
 
-        .form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
+section {
+    padding: 95px 7%;
+}
 
-        .form input,
-        .form select,
-        .form textarea {
-            width: 100%;
-            padding: 14px;
-            background: #292929;
-            color: white;
-            border: 1px solid #444;
-            border-radius: 4px;
-            outline: none;
-        }
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
 
-        .form textarea {
-            height: 120px;
-            resize: vertical;
-        }
+.section-title h2 {
+    font-size: clamp(32px, 5vw, 48px);
 
-        .form input:focus,
-        .form select:focus,
-        .form textarea:focus {
-            border-color: #d71920;
-        }
+    text-transform: uppercase;
 
-        /* CONTACT */
-        .contact {
-            text-align: center;
-            background: #181818;
-        }
+    margin-bottom: 12px;
 
-        .contact p {
-            color: #bbb;
-            margin: 10px;
-        }
+    letter-spacing: 1px;
+}
 
-        /* FOOTER */
-        footer {
-            background: #080808;
-            text-align: center;
-            padding: 30px;
-            color: #888;
-        }
+.section-title h2::after {
+    content: "";
+    display: block;
 
-        footer strong {
-            color: white;
-        }
+    width: 70px;
+    height: 4px;
 
-        /* MOBILE */
-        @media (max-width: 900px) {
+    background: linear-gradient(
+        90deg,
+        var(--orange),
+        var(--orange2)
+    );
 
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
+    margin: 15px auto 0;
 
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+    border-radius: 20px;
+}
 
-            .about-container {
-                grid-template-columns: 1fr;
-            }
+.section-title p {
+    color: var(--muted);
+    font-size: 16px;
+}
 
-            .bike-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+/* =========================
+   ABOUT
+========================= */
 
-            .gallery {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+.about {
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #0b1b2d
+        );
+}
 
-        @media (max-width: 600px) {
+.about-container {
+    display: grid;
 
-            .bike-grid {
-                grid-template-columns: 1fr;
-            }
+    grid-template-columns: 1fr 1fr;
 
-            .gallery {
-                grid-template-columns: 1fr;
-            }
+    gap: 60px;
 
-            .hero {
-                min-height: 75vh;
-            }
+    align-items: center;
+}
 
-            section {
-                padding: 60px 5%;
-            }
-        }
-    </style>
+.about img {
+    width: 100%;
+
+    height: 430px;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.45);
+
+    transition: 0.5s;
+}
+
+.about img:hover {
+    transform: scale(1.02);
+}
+
+.about-text h3 {
+    font-size: 36px;
+    margin-bottom: 22px;
+}
+
+.about-text p {
+    color: var(--muted);
+
+    line-height: 1.9;
+
+    margin-bottom: 17px;
+
+    font-size: 16px;
+}
+
+/* =========================
+   MOTORCYCLES
+========================= */
+
+#bikes {
+    background: #081523;
+}
+
+.bike-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 28px;
+}
+
+.bike-card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 42, 65, 0.95),
+            rgba(7, 17, 31, 0.98)
+        );
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.3);
+
+    transition: 0.4s;
+}
+
+.bike-card:hover {
+    transform: translateY(-12px);
+
+    border-color: var(--orange);
+
+    box-shadow:
+        0 20px 50px rgba(255,157,0,0.16);
+}
+
+.bike-card img {
+    width: 100%;
+    height: 270px;
+
+    object-fit: cover;
+
+    transition: 0.6s;
+}
+
+.bike-card:hover img {
+    transform: scale(1.08);
+}
+
+.bike-info {
+    padding: 27px;
+}
+
+.bike-info h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.bike-info p {
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+.price {
+    color: var(--orange);
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+/* =========================
+   COMPARISON
+========================= */
+
+.compare {
+    background:
+        linear-gradient(
+            135deg,
+            #0b1b2d,
+            #07111f
+        );
+}
+
+.table-container {
+    overflow-x: auto;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.3);
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: rgba(10,25,40,0.9);
+}
+
+th,
+td {
+    padding: 20px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    text-align: center;
+}
+
+th {
+    background:
+        linear-gradient(
+            135deg,
+            var(--orange),
+            var(--orange2)
+        );
+
+    color: #07111f;
+
+    font-weight: 900;
+}
+
+td {
+    color: #d9e2ec;
+}
+
+tr:hover td {
+    background: rgba(255,157,0,0.05);
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.gallery img {
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: 0.5s;
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+
+    border-color: var(--orange);
+
+    box-shadow:
+        0 15px 35px rgba(255,157,0,0.2);
+}
+
+/* =========================
+   TEST RIDE
+========================= */
+
+.test-ride {
+    background:
+        linear-gradient(
+            rgba(4,13,24,0.88),
+            rgba(4,13,24,0.94)
+        ),
+        url("https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=2000&q=90");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+}
+
+.form {
+    max-width: 720px;
+
+    margin: auto;
+
+    background:
+        rgba(8, 23, 38, 0.82);
+
+    backdrop-filter: blur(18px);
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255,157,0,0.2);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.5);
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-weight: bold;
+
+    color: #e9eef5;
+}
+
+.form input,
+.form select,
+.form textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    background: rgba(255,255,255,0.06);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+    border-color: var(--orange);
+
+    box-shadow:
+        0 0 0 3px rgba(255,157,0,0.1);
+}
+
+.form textarea {
+    height: 130px;
+
+    resize: vertical;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #07111f,
+            #102c46
+        );
+}
+
+.contact p {
+    color: var(--muted);
+
+    margin: 14px;
+
+    font-size: 17px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #040b13;
+
+    text-align: center;
+
+    padding: 35px;
+
+    color: #7f8c9b;
+
+    border-top: 1px solid rgba(255,157,0,0.15);
+}
+
+footer strong {
+    color: var(--orange);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav ul {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .bike-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero {
+        min-height: 80vh;
+        padding: 50px 6%;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    section {
+        padding: 70px 5%;
+    }
+
+    .bike-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .about img {
+        height: 300px;
+    }
+
+    .form {
+        padding: 25px;
+    }
+}
+        </style>
 </head>
 
 <body>
