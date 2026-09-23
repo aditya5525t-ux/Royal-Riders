@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Royal Riders | Motorcycle Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #090909;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #d71920;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d71920;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 7%;
+            background:
+                linear-gradient(90deg, rgba(0,0,0,0.95), rgba(0,0,0,0.35)),
+                url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzExMSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzIwMjAyMCIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPlJJREUgWU9VUiBMRUdFTkQ8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #d71920;
+        }
+
+        .hero p {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d71920;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #a90f15;
+            transform: translateY(-2px);
+        }
+
+        /* GENERAL */
+        section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #aaa;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #181818;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* MOTORCYCLES */
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .bike-card {
+            background: #1b1b1b;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #292929;
+            transition: 0.3s;
+        }
+
+        .bike-card:hover {
+            transform: translateY(-8px);
+            border-color: #d71920;
+        }
+
+        .bike-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .bike-info {
+            padding: 22px;
+        }
+
+        .bike-info h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .bike-info p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            color: #d71920;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        /* COMPARISON */
+        .compare {
+            background: #181818;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #101010;
+        }
+
+        th, td {
+            padding: 18px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+
+        th {
+            background: #d71920;
+        }
+
+        td {
+            color: #ddd;
+        }
+
+        /* GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* TEST RIDE */
+        .test-ride {
+            background:
+                linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)),
+                url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzEwMTgyMCIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI1MjUyNSIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPkJPT0sgWU9VUiBURVNUIFJJREU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .form {
+            max-width: 700px;
+            margin: auto;
+            background: rgba(20,20,20,0.95);
+            padding: 35px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form input,
+        .form select,
+        .form textarea {
+            width: 100%;
+            padding: 14px;
+            background: #292929;
+            color: white;
+            border: 1px solid #444;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form input:focus,
+        .form select:focus,
+        .form textarea:focus {
+            border-color: #d71920;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: #181818;
+        }
+
+        .contact p {
+            color: #bbb;
+            margin: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px;
+            color: #888;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .bike-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .bike-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">
+            ROYAL <span>RIDERS</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#bikes">Motorcycles</a></li>
+            <li><a href="#compare">Compare</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#test">Test Ride</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+
+            <h1>
+                Ride Your<br>
+                <span>Legend</span>
+            </h1>
+
+            <p>
+                Discover iconic motorcycles built for riders who believe
+                every journey should become a story.
+            </p>
+
+            <a href="#bikes" class="btn">
+                Explore Motorcycles
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <h2>Our Legacy</h2>
+            <p>Built for the road. Built for generations.</p>
+        </div>
+
+        <div class="about-container">
+
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzE3MTIwZiIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI5MjkyOSIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPkEgTEVHQUNZIE9GIFBVUkUgTU9UT1JDWUNMSU5HPC90ZXh0PgogICAgICA8dGV4dCB4PSI2MDAiIHk9IjY1MCIgZmlsbD0iI2FhYSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIgogICAgICAgICAgICBmb250LXNpemU9IjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ST1lBTCBSSURFUlMg4oCiIE1PVE9SQ1lDTEUgQ09MTEVDVElPTjwvdGV4dD4KICAgIDwvc3ZnPg==">
+
+            <div class="about-text">
+                <h3>A Legacy of Pure Motorcycling</h3>
+
+                <p>
+                    Motorcycling is more than simply travelling from one
+                    place to another. It is about freedom, adventure and
+                    unforgettable experiences.
+                </p>
+
+                <p>
+                    Our motorcycles combine classic design with modern
+                    engineering to create a riding experience that feels
+                    timeless.
+                </p>
+
+                <a href="#test" class="btn">Book a Test Ride</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- MOTORCYCLES -->
+    <section id="bikes">
+
+        <div class="section-title">
+            <h2>Motorcycles</h2>
+            <p>Find the motorcycle that matches your journey.</p>
+        </div>
+
+        <div class="bike-grid">
+
+            <div class="bike-card">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzE1MTUxNSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI1MjUyNSIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPkNMQVNTSUMgMzUwPC90ZXh0PgogICAgICA8dGV4dCB4PSI2MDAiIHk9IjY1MCIgZmlsbD0iI2FhYSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIgogICAgICAgICAgICBmb250LXNpemU9IjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ST1lBTCBSSURFUlMg4oCiIE1PVE9SQ1lDTEUgQ09MTEVDVElPTjwvdGV4dD4KICAgIDwvc3ZnPg==">
+
+                <div class="bike-info">
+                    <h3>Classic 350</h3>
+                    <p>
+                        Timeless styling with a comfortable and refined
+                        riding experience.
+                    </p>
+
+                    <div class="price">₹1.93 Lakh*</div>
+
+                    <a href="#test" class="btn">Test Ride</a>
+                </div>
+            </div>
+
+
+            <div class="bike-card">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzEwMTUxYSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzIyMiIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPkhVTlRFUiAzNTA8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+">
+
+                <div class="bike-info">
+                    <h3>Hunter 350</h3>
+                    <p>
+                        A modern roadster designed for urban adventures
+                        and everyday riding.
+                    </p>
+
+                    <div class="price">₹1.50 Lakh*</div>
+
+                    <a href="#test" class="btn">Test Ride</a>
+                </div>
+            </div>
+
+
+            <div class="bike-card">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzExMTgxNCIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI5MzAyYSIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPkhJTUFMQVlBTjwvdGV4dD4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI2NTAiIGZpbGw9IiNhYWEiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Uk9ZQUwgUklERVJTIOKAoiBNT1RPUkNZQ0xFIENPTExFQ1RJT048L3RleHQ+CiAgICA8L3N2Zz4=">
+
+                <div class="bike-info">
+                    <h3>Himalayan</h3>
+                    <p>
+                        Built for adventure, exploration and challenging
+                        roads.
+                    </p>
+
+                    <div class="price">₹2.85 Lakh*</div>
+
+                    <a href="#test" class="btn">Test Ride</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- COMPARE -->
+    <section class="compare" id="compare">
+
+        <div class="section-title">
+            <h2>Compare Bikes</h2>
+            <p>Compare some important specifications.</p>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+
+                <tr>
+                    <th>Specification</th>
+                    <th>Classic 350</th>
+                    <th>Hunter 350</th>
+                    <th>Himalayan</th>
+                </tr>
+
+                <tr>
+                    <td>Engine</td>
+                    <td>349 cc</td>
+                    <td>349 cc</td>
+                    <td>452 cc</td>
+                </tr>
+
+                <tr>
+                    <td>Power</td>
+                    <td>20.2 HP</td>
+                    <td>20.2 HP</td>
+                    <td>40 HP</td>
+                </tr>
+
+                <tr>
+                    <td>Transmission</td>
+                    <td>5 Speed</td>
+                    <td>5 Speed</td>
+                    <td>6 Speed</td>
+                </tr>
+
+                <tr>
+                    <td>Type</td>
+                    <td>Classic</td>
+                    <td>Roadster</td>
+                    <td>Adventure</td>
+                </tr>
+
+            </table>
+
+        </div>
+    </section>
+
+
+    <!-- GALLERY -->
+    <section id="gallery">
+
+        <div class="section-title">
+            <h2>Gallery</h2>
+            <p>Explore the world of motorcycling.</p>
+        </div>
+
+        <div class="gallery">
+
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzE3MTAwZiIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI2MjYyNiIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPlJPWUFMIFJJREVSUyBHQUxMRVJZPC90ZXh0PgogICAgICA8dGV4dCB4PSI2MDAiIHk9IjY1MCIgZmlsbD0iI2FhYSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIgogICAgICAgICAgICBmb250LXNpemU9IjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ST1lBTCBSSURFUlMg4oCiIE1PVE9SQ1lDTEUgQ09MTEVDVElPTjwvdGV4dD4KICAgIDwvc3ZnPg==">
+
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzEwMTMxOCIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI1MjYyYiIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPlRIRSBPUEVOIFJPQUQ8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+">
+
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzE1MTEwZSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI5MjIxZCIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPlJJREUg4oCiIEVYUExPUkUg4oCiIExJVkU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+">
+
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDcwMCI+CiAgICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzBmMTUxMiIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDUwNTA1Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJvYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzMzMyIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDkwOTA5Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjYmcpIi8+CiAgICAgIDxjaXJjbGUgY3g9Ijk3MCIgY3k9IjEyMCIgcj0iNzUiIGZpbGw9IiNkNzE5MjAiIG9wYWNpdHk9Ii4xOCIvPgogICAgICA8cGF0aCBkPSJNMCA1MDAgUTMwMCA0MzAgNjAwIDUxMCBUMTIwMCA0NzAgVjcwMCBIMFoiIGZpbGw9InVybCgjcm9hZCkiLz4KICAgICAgPHBhdGggZD0iTTAgNTkwIEgxMjAwIiBzdHJva2U9IiM1NTUiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjM1Ii8+CiAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE3NSAzMDApIj4KICAgICAgICA8Y2lyY2xlIGN4PSIxNzUiIGN5PSIyNTUiIHI9IjkyIiBmaWxsPSIjMDgwODA4IiBzdHJva2U9IiNhYWEiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxjaXJjbGUgY3g9Ijc2MCIgY3k9IjI1NSIgcj0iOTIiIGZpbGw9IiMwODA4MDgiIHN0cm9rZT0iI2FhYSIgc3Ryb2tlLXdpZHRoPSI3Ii8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjU1IiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNDQ0IiBzdHJva2Utd2lkdGg9IjciLz4KICAgICAgICA8Y2lyY2xlIGN4PSI3NjAiIGN5PSIyNTUiIHI9IjQ1IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iNyIvPgogICAgICAgIDxwYXRoIGQ9Ik0xNzUgMjU1IEwzMTUgMTIwIEw1MzAgMTUwIEw3NjAgMjU1IEw2MDAgMjU1IEw0ODUgMTM1IEwzMTUgMTIwIEwyNTAgMjU1IFoiCiAgICAgICAgICAgICAgZmlsbD0iIzI1MmQyOCIgc3Ryb2tlPSIjZDcxOTIwIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgICAgICA8cGF0aCBkPSJNMzE1IDEyMCBMMzY1IDU1IEw0NzUgNTUgTDUzMCAxNTAgTDQyMCAxNzUgWiIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjUiLz4KICAgICAgICA8cGF0aCBkPSJNNDc1IDU1IEw1MjAgMjUgTDU3NSAyNSBMNTU1IDYyIiBmaWxsPSJub25lIiBzdHJva2U9IiNiYmIiIHN0cm9rZS13aWR0aD0iMTAiLz4KICAgICAgICA8cGF0aCBkPSJNNTMwIDE1MCBMNjIwIDEwMCBMNzAwIDExNSBMNzYwIDI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEyIi8+CiAgICAgICAgPHBhdGggZD0iTTYyMCAxMDAgTDY2NSA1NSIgc3Ryb2tlPSIjYmJiIiBzdHJva2Utd2lkdGg9IjEwIi8+CiAgICAgICAgPHBhdGggZD0iTTI1MCAyNTUgTDM2NSAyMDUgTDYwMCAyMDUiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIyMCIvPgogICAgICAgIDxwYXRoIGQ9Ik0zNjUgMjA1IEwzMDAgMjU1IiBzdHJva2U9IiNkNzE5MjAiIHN0cm9rZS13aWR0aD0iMTIiLz4KICAgICAgICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxODUiIHI9IjE4IiBmaWxsPSIjZDcxOTIwIi8+CiAgICAgIDwvZz4KICAgICAgPHRleHQgeD0iNjAwIiB5PSI5MCIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICAgICAgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iLjkiPkJVSUxUIEZPUiBBRFZFTlRVUkU8L3RleHQ+CiAgICAgIDx0ZXh0IHg9IjYwMCIgeT0iNjUwIiBmaWxsPSIjYWFhIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgICAgIGZvbnQtc2l6ZT0iMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJPWUFMIFJJREVSUyDigKIgTU9UT1JDWUNMRSBDT0xMRUNUSU9OPC90ZXh0PgogICAgPC9zdmc+">
+
+        </div>
+
+    </section>
+
+
+    <!-- TEST RIDE -->
+    <section class="test-ride" id="test">
+
+        <div class="section-title">
+            <h2>Book a Test Ride</h2>
+            <p>Experience the motorcycle for yourself.</p>
+        </div>
+
+        <form class="form" onsubmit="bookRide(event)">
+
+            <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label>Select Motorcycle</label>
+
+                <select required>
+                    <option value="">Choose a motorcycle</option>
+                    <option>Classic 350</option>
+                    <option>Hunter 350</option>
+                    <option>Himalayan</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Date</label>
+                <input type="date" required>
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea placeholder="Any additional message..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">
+                Book Test Ride
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact">
+
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Have questions? Get in touch with us.</p>
+        </div>
+
+        <p>📍 Gaya, Bihar</p>
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ info@royalriders.example</p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 <strong>Royal Riders</strong> | Student Website Project
+        </p>
+
+        <p style="margin-top:10px;">
+            *Prices and specifications shown are for demonstration purposes.
+        </p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function bookRide(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you! Your test ride request has been submitted."
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
