@@ -702,10 +702,98 @@ footer strong {
    MANUAL IMAGE SLOTS
 ========================= */
 
-.about img,
-.bike-card img,
-.gallery img {
+.image-slot {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    overflow: hidden;
+    border-radius: 18px;
     background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,157,0,0.35);
+    cursor: pointer;
+}
+
+.about .image-slot {
+    height: 430px;
+    border-radius: 22px;
+}
+
+.bike-card .image-slot {
+    height: 270px;
+    border-radius: 0;
+    border: none;
+}
+
+.gallery .image-slot {
+    height: 250px;
+}
+
+.image-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.image-slot.has-image img {
+    display: block;
+}
+
+.image-slot-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--muted);
+    text-align: center;
+    padding: 20px;
+}
+
+.image-slot-placeholder strong {
+    color: var(--orange);
+    font-size: 16px;
+}
+
+.image-slot-placeholder span {
+    font-size: 13px;
+}
+
+.image-slot:hover .image-slot-placeholder {
+    background: rgba(255,157,0,0.08);
+}
+
+.image-slot input[type="file"] {
+    display: none;
+}
+
+.image-slot-uploading {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(4,13,24,0.78);
+    color: var(--orange);
+    font-weight: 900;
+    z-index: 3;
+}
+
+.image-slot.uploading .image-slot-uploading {
+    display: flex;
+}
+
+.image-slot.has-image .image-slot-placeholder {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .about .image-slot {
+        height: 300px;
+    }
 }
 
         </style>
@@ -762,7 +850,15 @@ footer strong {
 
         <div class="about-container">
 
-            <img src="images/about.jpg" alt="Royal Riders image">
+            <div class="image-slot" data-file="about.jpg" onclick="openImagePicker(this)">
+                <img alt="Royal Riders image">
+                <div class="image-slot-placeholder">
+                    <strong>Click to Add Image</strong>
+                    <span>about.jpg</span>
+                </div>
+                <div class="image-slot-uploading">Uploading...</div>
+                <input type="file" accept="image/*" onchange="uploadImage(this)">
+            </div>
 
             <div class="about-text">
                 <h3>A Legacy of Pure Motorcycling</h3>
@@ -797,7 +893,15 @@ footer strong {
         <div class="bike-grid">
 
             <div class="bike-card">
-                <img src="images/classic350.jpg" alt="Royal Riders image">
+                <div class="image-slot" data-file="classic350.jpg" onclick="openImagePicker(this)">
+                    <img alt="Classic 350">
+                    <div class="image-slot-placeholder">
+                        <strong>Click to Add Image</strong>
+                        <span>classic350.jpg</span>
+                    </div>
+                    <div class="image-slot-uploading">Uploading...</div>
+                    <input type="file" accept="image/*" onchange="uploadImage(this)">
+                </div>
 
                 <div class="bike-info">
                     <h3>Classic 350</h3>
@@ -814,7 +918,15 @@ footer strong {
 
 
             <div class="bike-card">
-                <img src="images/hunter350.jpg" alt="Royal Riders image">
+                <div class="image-slot" data-file="hunter350.jpg" onclick="openImagePicker(this)">
+                    <img alt="Hunter 350">
+                    <div class="image-slot-placeholder">
+                        <strong>Click to Add Image</strong>
+                        <span>hunter350.jpg</span>
+                    </div>
+                    <div class="image-slot-uploading">Uploading...</div>
+                    <input type="file" accept="image/*" onchange="uploadImage(this)">
+                </div>
 
                 <div class="bike-info">
                     <h3>Hunter 350</h3>
@@ -831,7 +943,15 @@ footer strong {
 
 
             <div class="bike-card">
-                <img src="images/himalayan.jpg" alt="Royal Riders image">
+                <div class="image-slot" data-file="himalayan.jpg" onclick="openImagePicker(this)">
+                    <img alt="Himalayan">
+                    <div class="image-slot-placeholder">
+                        <strong>Click to Add Image</strong>
+                        <span>himalayan.jpg</span>
+                    </div>
+                    <div class="image-slot-uploading">Uploading...</div>
+                    <input type="file" accept="image/*" onchange="uploadImage(this)">
+                </div>
 
                 <div class="bike-info">
                     <h3>Himalayan</h3>
@@ -913,13 +1033,45 @@ footer strong {
 
         <div class="gallery">
 
-            <img src="images/gallery1.jpg" alt="Royal Riders image">
+            <div class="image-slot" data-file="gallery1.jpg" onclick="openImagePicker(this)">
+                <img alt="Gallery image 1">
+                <div class="image-slot-placeholder">
+                    <strong>Click to Add Image</strong>
+                    <span>gallery1.jpg</span>
+                </div>
+                <div class="image-slot-uploading">Uploading...</div>
+                <input type="file" accept="image/*" onchange="uploadImage(this)">
+            </div>
 
-            <img src="images/gallery2.jpg" alt="Royal Riders image">
+            <div class="image-slot" data-file="gallery2.jpg" onclick="openImagePicker(this)">
+                <img alt="Gallery image 2">
+                <div class="image-slot-placeholder">
+                    <strong>Click to Add Image</strong>
+                    <span>gallery2.jpg</span>
+                </div>
+                <div class="image-slot-uploading">Uploading...</div>
+                <input type="file" accept="image/*" onchange="uploadImage(this)">
+            </div>
 
-            <img src="images/gallery3.jpg" alt="Royal Riders image">
+            <div class="image-slot" data-file="gallery3.jpg" onclick="openImagePicker(this)">
+                <img alt="Gallery image 3">
+                <div class="image-slot-placeholder">
+                    <strong>Click to Add Image</strong>
+                    <span>gallery3.jpg</span>
+                </div>
+                <div class="image-slot-uploading">Uploading...</div>
+                <input type="file" accept="image/*" onchange="uploadImage(this)">
+            </div>
 
-            <img src="images/gallery4.jpg" alt="Royal Riders image">
+            <div class="image-slot" data-file="gallery4.jpg" onclick="openImagePicker(this)">
+                <img alt="Gallery image 4">
+                <div class="image-slot-placeholder">
+                    <strong>Click to Add Image</strong>
+                    <span>gallery4.jpg</span>
+                </div>
+                <div class="image-slot-uploading">Uploading...</div>
+                <input type="file" accept="image/*" onchange="uploadImage(this)">
+            </div>
 
         </div>
 
@@ -1010,7 +1162,118 @@ footer strong {
 
 
     <!-- JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
+
+        const SUPABASE_URL = "https://dcvwsccpvoaglmdrnrlp.supabase.co";
+        const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY";
+        const STORAGE_BUCKET = "ROYAL-RIDERS12";
+
+        const supabaseClient = supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+        function getPublicImageUrl(fileName) {
+            return supabaseClient.storage
+                .from(STORAGE_BUCKET)
+                .getPublicUrl(fileName).data.publicUrl;
+        }
+
+        async function loadSavedImages() {
+
+            document.querySelectorAll(".image-slot").forEach((slot) => {
+
+                const fileName = slot.dataset.file;
+                const image = slot.querySelector("img");
+
+                image.onload = () => slot.classList.add("has-image");
+                image.onerror = () => slot.classList.remove("has-image");
+
+                image.src = getPublicImageUrl(fileName) + "?t=" + Date.now();
+
+            });
+
+        }
+
+        async function openImagePicker(slot) {
+
+            const { data: { session } } =
+                await supabaseClient.auth.getSession();
+
+            if (!session) {
+
+                const email = prompt("Enter your Supabase admin email:");
+                if (!email) return;
+
+                const password = prompt("Enter your Supabase password:");
+                if (!password) return;
+
+                const { error } =
+                    await supabaseClient.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+                if (error) {
+                    alert("Login failed: " + error.message);
+                    return;
+                }
+
+            }
+
+            slot.querySelector('input[type="file"]').click();
+
+        }
+
+        async function uploadImage(input) {
+
+            const file = input.files[0];
+            if (!file) return;
+
+            const slot = input.closest(".image-slot");
+            const fileName = slot.dataset.file;
+
+            slot.classList.add("uploading");
+
+            try {
+
+                const { data: { session } } =
+                    await supabaseClient.auth.getSession();
+
+                if (!session) {
+                    throw new Error("Please log in first.");
+                }
+
+                const { error } = await supabaseClient.storage
+                    .from(STORAGE_BUCKET)
+                    .upload(fileName, file, {
+                        upsert: true,
+                        cacheControl: "3600"
+                    });
+
+                if (error) throw error;
+
+                const image = slot.querySelector("img");
+                image.src = getPublicImageUrl(fileName) + "?t=" + Date.now();
+
+                image.onload = () => slot.classList.add("has-image");
+
+                alert("Image uploaded successfully!");
+
+            } catch (error) {
+
+                alert("Upload failed: " + error.message);
+
+            } finally {
+
+                slot.classList.remove("uploading");
+                input.value = "";
+
+            }
+
+        }
 
         function bookRide(event) {
 
@@ -1021,6 +1284,8 @@ footer strong {
             );
 
         }
+
+        loadSavedImages();
 
     </script>
 
