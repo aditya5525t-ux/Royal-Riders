@@ -1226,54 +1226,79 @@ footer strong {
             slot.querySelector('input[type="file"]').click();
 
         }
+async function uploadImage(input) {
 
-        async function uploadImage(input) {
+    const file = input.files[0];
+    if (!file) return;
 
-            const file = input.files[0];
-            if (!file) return;
+    const slot = input.closest(".image-slot");
+    const fileName = slot.dataset.file;
 
-            const slot = input.closest(".image-slot");
-            const fileName = slot.dataset.file;
+    if (!slot || !fileName) {
+        alert("Image slot error.");
+        return;
+    }
 
-            slot.classList.add("uploading");
+    if (file.size > 10 * 1024 * 1024) {
+        alert("Please choose an image smaller than 10 MB.");
+        input.value = "";
+        return;
+    }
 
-            try {
+    slot.classList.add("uploading");
 
-                const { data: { session } } =
-                    await supabaseClient.auth.getSession();
+    try {
 
-                if (!session) {
-                    throw new Error("Please log in first.");
-                }
+        const { data, error: sessionError } =
+            await supabaseClient.auth.getSession();
 
-                const { error } = await supabaseClient.storage
-                    .from(STORAGE_BUCKET)
-                    .upload(fileName, file, {
+        if (sessionError) {
+            throw sessionError;
+        }
+
+        if (!data.session) {
+            throw new Error("Please log in first.");
+        }
+
+        const { error: uploadError } =
+            await supabaseClient.storage
+                .from(STORAGE_BUCKET)
+                .upload(
+                    fileName,
+                    file,
+                    {
                         upsert: true,
                         cacheControl: "3600"
-                    });
+                    }
+                );
 
-                if (error) throw error;
-
-                const image = slot.querySelector("img");
-                image.src = getPublicImageUrl(fileName) + "?t=" + Date.now();
-
-                image.onload = () => slot.classList.add("has-image");
-
-                alert("Image uploaded successfully!");
-
-            } catch (error) {
-
-                alert("Upload failed: " + error.message);
-
-            } finally {
-
-                slot.classList.remove("uploading");
-                input.value = "";
-
-            }
-
+        if (uploadError) {
+            throw uploadError;
         }
+
+        const image = slot.querySelector("img");
+
+        image.onload = () => {
+            slot.classList.add("has-image");
+        };
+
+        image.src =
+            getPublicImageUrl(fileName) +
+            "?t=" +
+            Date.now();
+
+    } catch (error) {
+
+        alert("Upload failed: " + error.message);
+
+    } finally {
+
+        slot.classList.remove("uploading");
+        input.value = "";
+
+    }
+
+}
 
         function bookRide(event) {
 
