@@ -1,1293 +1,1377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Royal Riders | Motorcycle Website</title>
+<title>Royal Riders | Ride Your Story</title>
 
-    <style>
-       * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
-:root {
-    --bg: #07111f;
-    --bg2: #0b1b2d;
-    --card: rgba(15, 31, 49, 0.92);
-    --blue: #12395b;
-    --orange: #ff9d00;
-    --orange2: #ff6a00;
-    --white: #f5f7fa;
-    --muted: #aab7c7;
-    --border: rgba(255, 157, 0, 0.25);
+:root{
+    --black:#07030b;
+    --dark:#100612;
+    --red:#ff1744;
+    --red2:#ff003c;
+    --pink:#ff3f81;
+    --purple:#9b4dff;
+    --lavender:#c18cff;
+    --orange:#ff8a00;
+    --white:#fff8fc;
+    --muted:#c7b9c5;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg);
-    color: var(--white);
+body{
+    font-family:"Manrope",sans-serif;
+    background:var(--black);
+    color:var(--white);
+    overflow-x:hidden;
 }
 
 /* =========================
    NAVIGATION
 ========================= */
 
-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    padding: 18px 7%;
+    padding:20px 7%;
 
-    background: rgba(4, 13, 24, 0.88);
-    backdrop-filter: blur(15px);
+    background:rgba(7,3,11,.72);
+    backdrop-filter:blur(18px);
 
-    border-bottom: 1px solid rgba(255, 157, 0, 0.18);
+    border-bottom:1px solid rgba(255,23,68,.25);
 }
 
-.logo {
-    font-size: 27px;
-    font-weight: 900;
-    letter-spacing: 2px;
+.logo{
+    font-size:25px;
+    font-weight:800;
+    letter-spacing:3px;
 }
 
-.logo span {
-    color: var(--orange);
+.logo span{
+    color:var(--red);
+    text-shadow:0 0 20px rgba(255,23,68,.7);
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 28px;
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
 }
 
-nav a {
-    color: #e9eef5;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: 0.3s;
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    transition:.3s;
 }
 
-nav a:hover {
-    color: var(--orange);
+nav a:hover{
+    color:var(--red);
+    text-shadow:0 0 15px rgba(255,23,68,.7);
 }
 
 /* =========================
    HERO
 ========================= */
 
-.hero {
-    min-height: 92vh;
+.hero{
+    min-height:100vh;
 
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
 
-    padding: 70px 7%;
+    padding:120px 7% 80px;
+
+    position:relative;
+    overflow:hidden;
 
     background:
         linear-gradient(
             90deg,
-            rgba(3, 12, 22, 0.97) 0%,
-            rgba(3, 12, 22, 0.82) 38%,
-            rgba(3, 12, 22, 0.25) 75%
+            rgba(7,2,12,.96) 0%,
+            rgba(35,4,25,.75) 42%,
+            rgba(30,4,35,.18) 78%
         ),
-        url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=2000&q=90");
+        url("images/hero.jpg");
 
-    background-size: cover;
-    background-position: center;
-
-    position: relative;
+    background-size:cover;
+    background-position:center;
 }
 
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+.hero::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+
+    right:-180px;
+    top:-150px;
+
+    background:radial-gradient(
+        circle,
+        rgba(255,0,70,.48),
+        rgba(155,77,255,.25),
+        transparent 70%
+    );
+
+    filter:blur(25px);
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 60% 70%,
+            rgba(255,30,90,.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(160,70,255,.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            transparent 60%,
+            rgba(7,3,11,.95) 100%
+        );
+
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:760px;
+}
+
+.hero-tag{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    margin-bottom:25px;
+
+    color:#ffd8e5;
+
+    font-size:13px;
+    font-weight:700;
+
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.hero-tag span{
+    width:60px;
+    height:3px;
+
+    background:linear-gradient(
+        90deg,
+        var(--red),
+        var(--lavender)
+    );
+
+    border-radius:20px;
+
+    box-shadow:
+        0 0 15px rgba(255,23,68,.8);
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(65px,9vw,125px);
+
+    line-height:.9;
+
+    letter-spacing:-5px;
+
+    margin-bottom:30px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        0 15px 50px rgba(0,0,0,.6);
+}
+
+.hero h1 span{
+    display:block;
+
+    background:linear-gradient(
+        90deg,
+        #ff1744,
+        #ff3f81,
+        #c18cff
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    filter:
+        drop-shadow(0 0 20px rgba(255,23,68,.45));
+}
+
+.hero p{
+    max-width:600px;
+
+    color:#e7dce5;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+
+    padding:16px 32px;
+
+    border-radius:50px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:800;
 
     background:
         linear-gradient(
-            180deg,
-            transparent 70%,
-            var(--bg) 100%
+            135deg,
+            var(--red),
+            var(--pink),
+            var(--purple)
         );
 
-    pointer-events: none;
+    box-shadow:
+        0 10px 35px rgba(255,23,68,.3),
+        0 0 30px rgba(155,77,255,.15);
+
+    transition:.35s;
 }
 
-.hero-content {
-    max-width: 680px;
-    position: relative;
-    z-index: 2;
-}
+.btn:hover{
+    transform:translateY(-5px) scale(1.03);
 
-.hero h1 {
-    font-size: clamp(52px, 8vw, 95px);
-    line-height: 0.95;
-    margin-bottom: 25px;
-
-    text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: -2px;
-}
-
-.hero h1 span {
-    color: var(--orange);
-    text-shadow: 0 0 25px rgba(255, 157, 0, 0.35);
-}
-
-.hero p {
-    color: #d5deea;
-    font-size: 18px;
-    line-height: 1.7;
-    max-width: 570px;
-    margin-bottom: 32px;
+    box-shadow:
+        0 15px 45px rgba(255,23,68,.5),
+        0 0 50px rgba(155,77,255,.3);
 }
 
 /* =========================
-   BUTTON
+   GENERAL
 ========================= */
 
-.btn {
-    display: inline-block;
-
-    background: linear-gradient(
-        135deg,
-        var(--orange),
-        var(--orange2)
-    );
-
-    color: #07111f;
-
-    padding: 15px 30px;
-
-    border-radius: 50px;
-
-    text-decoration: none;
-
-    font-weight: 900;
-
-    border: none;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 25px rgba(255, 106, 0, 0.25);
-
-    transition: 0.3s;
+section{
+    padding:110px 7%;
+    position:relative;
 }
 
-.btn:hover {
-    transform: translateY(-4px) scale(1.03);
-
-    box-shadow:
-        0 12px 35px rgba(255, 157, 0, 0.45);
+.section-title{
+    text-align:center;
+    margin-bottom:65px;
 }
 
-/* =========================
-   GENERAL SECTIONS
-========================= */
+.section-title h2{
+    font-family:"Playfair Display",serif;
 
-section {
-    padding: 95px 7%;
+    font-size:clamp(40px,5vw,65px);
+
+    margin-bottom:15px;
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 55px;
+.section-title h2 span{
+    color:var(--red);
 }
 
-.section-title h2 {
-    font-size: clamp(32px, 5vw, 48px);
-
-    text-transform: uppercase;
-
-    margin-bottom: 12px;
-
-    letter-spacing: 1px;
-}
-
-.section-title h2::after {
-    content: "";
-    display: block;
-
-    width: 70px;
-    height: 4px;
-
-    background: linear-gradient(
-        90deg,
-        var(--orange),
-        var(--orange2)
-    );
-
-    margin: 15px auto 0;
-
-    border-radius: 20px;
-}
-
-.section-title p {
-    color: var(--muted);
-    font-size: 16px;
+.section-title p{
+    color:var(--muted);
 }
 
 /* =========================
    ABOUT
 ========================= */
 
-.about {
+.about{
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(255,0,70,.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(150,50,255,.15),
+            transparent 30%
+        ),
+        var(--dark);
+}
+
+.about-container{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.image-box{
+    position:relative;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    min-height:430px;
+
     background:
         linear-gradient(
             135deg,
-            #07111f,
-            #0b1b2d
+            rgba(255,23,68,.15),
+            rgba(155,77,255,.18)
         );
-}
 
-.about-container {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
-
-    align-items: center;
-}
-
-.about img {
-    width: 100%;
-
-    height: 430px;
-
-    object-fit: cover;
-
-    border-radius: 22px;
-
-    border: 1px solid var(--border);
+    border:1px solid rgba(255,80,130,.25);
 
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.45);
-
-    transition: 0.5s;
+        0 30px 80px rgba(0,0,0,.45);
 }
 
-.about img:hover {
-    transform: scale(1.02);
+.image-box img{
+    width:100%;
+    height:100%;
+
+    min-height:430px;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:.6s;
 }
 
-.about-text h3 {
-    font-size: 36px;
-    margin-bottom: 22px;
+.image-box:hover img{
+    transform:scale(1.06);
 }
 
-.about-text p {
-    color: var(--muted);
+.about-text h3{
+    font-family:"Playfair Display",serif;
 
-    line-height: 1.9;
+    font-size:42px;
 
-    margin-bottom: 17px;
+    margin-bottom:25px;
+}
 
-    font-size: 16px;
+.about-text p{
+    color:var(--muted);
+
+    line-height:1.9;
+
+    margin-bottom:18px;
 }
 
 /* =========================
    MOTORCYCLES
 ========================= */
 
-#bikes {
-    background: #081523;
+.bikes{
+    background:
+        linear-gradient(
+            135deg,
+            #0c030b,
+            #160719,
+            #08030d
+        );
 }
 
-.bike-grid {
-    display: grid;
+.bike-grid{
+    display:grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    gap: 28px;
+    gap:28px;
 }
 
-.bike-card {
+.bike-card{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
     background:
         linear-gradient(
             145deg,
-            rgba(20, 42, 65, 0.95),
-            rgba(7, 17, 31, 0.98)
+            rgba(45,10,35,.95),
+            rgba(12,4,18,.98)
         );
 
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    border: 1px solid rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,.08);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.3);
+        0 20px 55px rgba(0,0,0,.45);
 
-    transition: 0.4s;
+    transition:.4s;
 }
 
-.bike-card:hover {
-    transform: translateY(-12px);
+.bike-card:hover{
+    transform:translateY(-12px);
 
-    border-color: var(--orange);
+    border-color:rgba(255,23,68,.7);
 
     box-shadow:
-        0 20px 50px rgba(255,157,0,0.16);
+        0 25px 70px rgba(255,23,68,.18);
 }
 
-.bike-card img {
-    width: 100%;
-    height: 270px;
+.bike-image{
+    height:280px;
 
-    object-fit: cover;
+    overflow:hidden;
 
-    transition: 0.6s;
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,23,68,.2),
+            transparent 65%
+        );
 }
 
-.bike-card:hover img {
-    transform: scale(1.08);
+.bike-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
 }
 
-.bike-info {
-    padding: 27px;
+.bike-card:hover img{
+    transform:scale(1.08);
 }
 
-.bike-info h3 {
-    font-size: 28px;
-    margin-bottom: 10px;
+.bike-info{
+    padding:28px;
 }
 
-.bike-info p {
-    color: var(--muted);
+.bike-info h3{
+    font-family:"Playfair Display",serif;
 
-    line-height: 1.7;
+    font-size:32px;
 
-    margin-bottom: 18px;
+    margin-bottom:12px;
 }
 
-.price {
-    color: var(--orange);
+.bike-info p{
+    color:var(--muted);
 
-    font-size: 21px;
+    line-height:1.7;
 
-    font-weight: 900;
+    margin-bottom:20px;
+}
 
-    margin-bottom: 20px;
+.price{
+    color:#ff6c92;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    margin-bottom:22px;
 }
 
 /* =========================
    COMPARISON
 ========================= */
 
-.compare {
+.compare{
     background:
-        linear-gradient(
-            135deg,
-            #0b1b2d,
-            #07111f
-        );
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(155,77,255,.16),
+            transparent 40%
+        ),
+        #08030b;
 }
 
-.table-container {
-    overflow-x: auto;
+.table-container{
+    overflow-x:auto;
 
-    border-radius: 18px;
+    border-radius:20px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,.08);
 
-    box-shadow:
-        0 20px 50px rgba(0,0,0,0.3);
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
 }
 
-table {
-    width: 100%;
+table{
+    width:100%;
 
-    border-collapse: collapse;
+    border-collapse:collapse;
 
-    background: rgba(10,25,40,0.9);
+    background:rgba(20,7,24,.88);
 }
 
 th,
-td {
-    padding: 20px;
+td{
+    padding:22px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    text-align:center;
 
-    text-align: center;
+    border-bottom:1px solid rgba(255,255,255,.07);
 }
 
-th {
+th{
     background:
         linear-gradient(
             135deg,
-            var(--orange),
-            var(--orange2)
+            var(--red),
+            var(--pink),
+            var(--purple)
         );
 
-    color: #07111f;
+    color:white;
 
-    font-weight: 900;
+    font-weight:800;
 }
 
-td {
-    color: #d9e2ec;
+td{
+    color:#e4d9e3;
 }
 
-tr:hover td {
-    background: rgba(255,157,0,0.05);
+tr:hover td{
+    background:rgba(255,23,68,.06);
 }
 
 /* =========================
    GALLERY
 ========================= */
 
-.gallery {
-    display: grid;
+.gallery-section{
+    background:
+        linear-gradient(
+            135deg,
+            #0b030d,
+            #170716
+        );
+}
+
+.gallery{
+    display:grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
-    gap: 18px;
+    gap:18px;
 }
 
-.gallery img {
-    width: 100%;
+.gallery-item{
+    height:260px;
 
-    height: 250px;
+    overflow:hidden;
 
-    object-fit: cover;
+    border-radius:20px;
 
-    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.08);
 
-    border: 1px solid rgba(255,255,255,0.08);
-
-    transition: 0.5s;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,23,68,.15),
+            rgba(155,77,255,.15)
+        );
 }
 
-.gallery img:hover {
-    transform: scale(1.04);
+.gallery-item img{
+    width:100%;
+    height:100%;
 
-    border-color: var(--orange);
+    object-fit:cover;
 
-    box-shadow:
-        0 15px 35px rgba(255,157,0,0.2);
+    transition:.6s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
 }
 
 /* =========================
    TEST RIDE
 ========================= */
 
-.test-ride {
+.test{
     background:
         linear-gradient(
-            rgba(4,13,24,0.88),
-            rgba(4,13,24,0.94)
+            rgba(10,2,12,.85),
+            rgba(20,3,20,.92)
         ),
-        url("https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=2000&q=90");
+        url("images/test.jpg");
 
-    background-size: cover;
+    background-size:cover;
+    background-position:center;
 
-    background-position: center;
-
-    background-attachment: fixed;
+    background-attachment:fixed;
 }
 
-.form {
-    max-width: 720px;
+.form{
+    max-width:720px;
 
-    margin: auto;
+    margin:auto;
 
-    background:
-        rgba(8, 23, 38, 0.82);
+    padding:45px;
 
-    backdrop-filter: blur(18px);
+    border-radius:25px;
 
-    padding: 40px;
+    background:rgba(20,5,25,.78);
 
-    border-radius: 24px;
+    backdrop-filter:blur(20px);
 
-    border: 1px solid rgba(255,157,0,0.2);
+    border:1px solid rgba(255,23,68,.3);
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,0.5);
+        0 30px 80px rgba(0,0,0,.5);
 }
 
-.form-group {
-    margin-bottom: 22px;
+.form-group{
+    margin-bottom:22px;
 }
 
-.form label {
-    display: block;
+.form label{
+    display:block;
 
-    margin-bottom: 9px;
+    margin-bottom:9px;
 
-    font-weight: bold;
-
-    color: #e9eef5;
+    font-weight:700;
 }
 
 .form input,
 .form select,
-.form textarea {
-    width: 100%;
+.form textarea{
+    width:100%;
 
-    padding: 15px;
+    padding:15px 17px;
 
-    background: rgba(255,255,255,0.06);
+    border-radius:12px;
 
-    color: white;
+    border:1px solid rgba(255,255,255,.1);
 
-    border: 1px solid rgba(255,255,255,0.12);
+    background:rgba(255,255,255,.06);
 
-    border-radius: 10px;
+    color:white;
 
-    outline: none;
-
-    transition: 0.3s;
+    outline:none;
 }
 
 .form input:focus,
 .form select:focus,
-.form textarea:focus {
-    border-color: var(--orange);
+.form textarea:focus{
+    border-color:var(--red);
 
     box-shadow:
-        0 0 0 3px rgba(255,157,0,0.1);
+        0 0 20px rgba(255,23,68,.15);
 }
 
-.form textarea {
-    height: 130px;
+.form textarea{
+    height:130px;
 
-    resize: vertical;
+    resize:vertical;
 }
 
 /* =========================
    CONTACT
 ========================= */
 
-.contact {
-    text-align: center;
+.contact{
+    text-align:center;
 
     background:
-        linear-gradient(
-            135deg,
-            #07111f,
-            #102c46
-        );
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,23,68,.2),
+            transparent 40%
+        ),
+        #08030b;
 }
 
-.contact p {
-    color: var(--muted);
+.contact p{
+    color:var(--muted);
 
-    margin: 14px;
-
-    font-size: 17px;
+    margin:12px;
 }
 
 /* =========================
    FOOTER
 ========================= */
 
-footer {
-    background: #040b13;
+footer{
+    padding:35px;
 
-    text-align: center;
+    text-align:center;
 
-    padding: 35px;
+    color:#8e7d8b;
 
-    color: #7f8c9b;
+    background:#040207;
 
-    border-top: 1px solid rgba(255,157,0,0.15);
+    border-top:1px solid rgba(255,23,68,.2);
 }
 
-footer strong {
-    color: var(--orange);
+footer strong{
+    color:var(--red);
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media (max-width: 900px) {
+@media(max-width:900px){
 
-    nav {
-        flex-direction: column;
-        gap: 18px;
+    nav{
+        flex-direction:column;
+        gap:15px;
     }
 
-    nav ul {
-        gap: 15px;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
+    nav ul{
+        gap:15px;
+        flex-wrap:wrap;
+        justify-content:center;
     }
 
-    .about-container {
-        grid-template-columns: 1fr;
+    .about-container{
+        grid-template-columns:1fr;
     }
 
-    .bike-grid {
-        grid-template-columns: 1fr 1fr;
+    .bike-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .gallery {
-        grid-template-columns: 1fr 1fr;
+    .gallery{
+        grid-template-columns:1fr 1fr;
     }
 }
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    nav {
-        padding: 15px 5%;
+    nav{
+        padding:15px 5%;
     }
 
-    .logo {
-        font-size: 22px;
+    nav a{
+        font-size:10px;
     }
 
-    nav ul {
-        gap: 10px;
+    .hero{
+        min-height:90vh;
+        padding:120px 6% 70px;
     }
 
-    nav a {
-        font-size: 11px;
+    .hero h1{
+        font-size:60px;
+        letter-spacing:-3px;
     }
 
-    .hero {
-        min-height: 80vh;
-        padding: 50px 6%;
+    .hero p{
+        font-size:16px;
     }
 
-    .hero h1 {
-        font-size: 55px;
+    section{
+        padding:75px 5%;
     }
 
-    .hero p {
-        font-size: 16px;
+    .bike-grid{
+        grid-template-columns:1fr;
     }
 
-    section {
-        padding: 70px 5%;
+    .gallery{
+        grid-template-columns:1fr;
     }
 
-    .bike-grid {
-        grid-template-columns: 1fr;
+    .form{
+        padding:25px;
     }
 
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .about img {
-        height: 300px;
-    }
-
-    .form {
-        padding: 25px;
-    }
-}
-        
-/* =========================
-   MANUAL IMAGE SLOTS
-========================= */
-
-.image-slot {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 250px;
-    overflow: hidden;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.03);
-    border: 1px dashed rgba(255,157,0,0.35);
-    cursor: pointer;
 }
 
-.about .image-slot {
-    height: 430px;
-    border-radius: 22px;
-}
-
-.bike-card .image-slot {
-    height: 270px;
-    border-radius: 0;
-    border: none;
-}
-
-.gallery .image-slot {
-    height: 250px;
-}
-
-.image-slot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
-}
-
-.image-slot.has-image img {
-    display: block;
-}
-
-.image-slot-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-    color: var(--muted);
-    text-align: center;
-    padding: 20px;
-}
-
-.image-slot-placeholder strong {
-    color: var(--orange);
-    font-size: 16px;
-}
-
-.image-slot-placeholder span {
-    font-size: 13px;
-}
-
-.image-slot:hover .image-slot-placeholder {
-    background: rgba(255,157,0,0.08);
-}
-
-.image-slot input[type="file"] {
-    display: none;
-}
-
-.image-slot-uploading {
-    position: absolute;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: rgba(4,13,24,0.78);
-    color: var(--orange);
-    font-weight: 900;
-    z-index: 3;
-}
-
-.image-slot.uploading .image-slot-uploading {
-    display: flex;
-}
-
-.image-slot.has-image .image-slot-placeholder {
-    display: none;
-}
-
-@media (max-width: 600px) {
-    .about .image-slot {
-        height: 300px;
-    }
-}
-
-        </style>
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="logo">
-            ROYAL <span>RIDERS</span>
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        ROYAL <span>RIDERS</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#bikes">Bikes</a></li>
+        <li><a href="#compare">Compare</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#test">Test Ride</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-tag">
+            <span></span>
+            Legendary Bikes. Timeless Journeys.
         </div>
 
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#bikes">Motorcycles</a></li>
-            <li><a href="#compare">Compare</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#test">Test Ride</a></li>
-        </ul>
-    </nav>
+        <h1>
+            Ride Your
+            <span>Story</span>
+        </h1>
+
+        <p>
+            At Royal Riders, we bring you more than just motorcycles.
+            We bring freedom, adventure and a legacy that lives with every ride.
+        </p>
+
+        <a href="#bikes" class="btn">
+            Explore Bikes →
+        </a>
+
+    </div>
+
+</section>
 
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-content">
+<!-- =========================
+     ABOUT
+========================= -->
 
-            <h1>
-                Ride Your<br>
-                <span>Legend</span>
-            </h1>
+<section class="about" id="about">
+
+    <div class="section-title">
+
+        <h2>Our <span>Legacy</span></h2>
+
+        <p>
+            Built for the road. Built for generations.
+        </p>
+
+    </div>
+
+
+    <div class="about-container">
+
+        <div class="image-box">
+
+            <img
+                src="images/about.jpg"
+                alt="Royal Riders motorcycle"
+            >
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h3>
+                A Legacy of Pure Motorcycling
+            </h3>
 
             <p>
-                Discover iconic motorcycles built for riders who believe
-                every journey should become a story.
+                Motorcycling is more than simply travelling from one
+                place to another. It is freedom, adventure and the
+                unforgettable feeling of an open road.
             </p>
 
-            <a href="#bikes" class="btn">
-                Explore Motorcycles
+            <p>
+                Royal Riders celebrates motorcycles that combine
+                timeless design, modern engineering and the spirit
+                of exploration.
+            </p>
+
+            <a href="#test" class="btn">
+                Book a Test Ride
             </a>
 
         </div>
-    </section>
 
+    </div>
 
-    <!-- ABOUT -->
-    <section class="about" id="about">
+</section>
 
-        <div class="section-title">
-            <h2>Our Legacy</h2>
-            <p>Built for the road. Built for generations.</p>
-        </div>
 
-        <div class="about-container">
+<!-- =========================
+     MOTORCYCLES
+========================= -->
 
-            <div class="image-slot" data-file="about.jpg" onclick="openImagePicker(this)">
-                <img alt="Royal Riders image">
-                <div class="image-slot-placeholder">
-                    <strong>Click to Add Image</strong>
-                    <span>about.jpg</span>
-                </div>
-                <div class="image-slot-uploading">Uploading...</div>
-                <input type="file" accept="image/*" onchange="uploadImage(this)">
-            </div>
+<section class="bikes" id="bikes">
 
-            <div class="about-text">
-                <h3>A Legacy of Pure Motorcycling</h3>
+    <div class="section-title">
 
-                <p>
-                    Motorcycling is more than simply travelling from one
-                    place to another. It is about freedom, adventure and
-                    unforgettable experiences.
-                </p>
+        <h2>Choose Your <span>Machine</span></h2>
 
-                <p>
-                    Our motorcycles combine classic design with modern
-                    engineering to create a riding experience that feels
-                    timeless.
-                </p>
-
-                <a href="#test" class="btn">Book a Test Ride</a>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- MOTORCYCLES -->
-    <section id="bikes">
-
-        <div class="section-title">
-            <h2>Motorcycles</h2>
-            <p>Find the motorcycle that matches your journey.</p>
-        </div>
-
-        <div class="bike-grid">
-
-            <div class="bike-card">
-                <div class="image-slot" data-file="classic350.jpg" onclick="openImagePicker(this)">
-                    <img alt="Classic 350">
-                    <div class="image-slot-placeholder">
-                        <strong>Click to Add Image</strong>
-                        <span>classic350.jpg</span>
-                    </div>
-                    <div class="image-slot-uploading">Uploading...</div>
-                    <input type="file" accept="image/*" onchange="uploadImage(this)">
-                </div>
-
-                <div class="bike-info">
-                    <h3>Classic 350</h3>
-                    <p>
-                        Timeless styling with a comfortable and refined
-                        riding experience.
-                    </p>
-
-                    <div class="price">₹1.93 Lakh*</div>
-
-                    <a href="#test" class="btn">Test Ride</a>
-                </div>
-            </div>
-
-
-            <div class="bike-card">
-                <div class="image-slot" data-file="hunter350.jpg" onclick="openImagePicker(this)">
-                    <img alt="Hunter 350">
-                    <div class="image-slot-placeholder">
-                        <strong>Click to Add Image</strong>
-                        <span>hunter350.jpg</span>
-                    </div>
-                    <div class="image-slot-uploading">Uploading...</div>
-                    <input type="file" accept="image/*" onchange="uploadImage(this)">
-                </div>
-
-                <div class="bike-info">
-                    <h3>Hunter 350</h3>
-                    <p>
-                        A modern roadster designed for urban adventures
-                        and everyday riding.
-                    </p>
-
-                    <div class="price">₹1.50 Lakh*</div>
-
-                    <a href="#test" class="btn">Test Ride</a>
-                </div>
-            </div>
-
-
-            <div class="bike-card">
-                <div class="image-slot" data-file="himalayan.jpg" onclick="openImagePicker(this)">
-                    <img alt="Himalayan">
-                    <div class="image-slot-placeholder">
-                        <strong>Click to Add Image</strong>
-                        <span>himalayan.jpg</span>
-                    </div>
-                    <div class="image-slot-uploading">Uploading...</div>
-                    <input type="file" accept="image/*" onchange="uploadImage(this)">
-                </div>
-
-                <div class="bike-info">
-                    <h3>Himalayan</h3>
-                    <p>
-                        Built for adventure, exploration and challenging
-                        roads.
-                    </p>
-
-                    <div class="price">₹2.85 Lakh*</div>
-
-                    <a href="#test" class="btn">Test Ride</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- COMPARE -->
-    <section class="compare" id="compare">
-
-        <div class="section-title">
-            <h2>Compare Bikes</h2>
-            <p>Compare some important specifications.</p>
-        </div>
-
-        <div class="table-container">
-
-            <table>
-
-                <tr>
-                    <th>Specification</th>
-                    <th>Classic 350</th>
-                    <th>Hunter 350</th>
-                    <th>Himalayan</th>
-                </tr>
-
-                <tr>
-                    <td>Engine</td>
-                    <td>349 cc</td>
-                    <td>349 cc</td>
-                    <td>452 cc</td>
-                </tr>
-
-                <tr>
-                    <td>Power</td>
-                    <td>20.2 HP</td>
-                    <td>20.2 HP</td>
-                    <td>40 HP</td>
-                </tr>
-
-                <tr>
-                    <td>Transmission</td>
-                    <td>5 Speed</td>
-                    <td>5 Speed</td>
-                    <td>6 Speed</td>
-                </tr>
-
-                <tr>
-                    <td>Type</td>
-                    <td>Classic</td>
-                    <td>Roadster</td>
-                    <td>Adventure</td>
-                </tr>
-
-            </table>
-
-        </div>
-    </section>
-
-
-    <!-- GALLERY -->
-    <section id="gallery">
-
-        <div class="section-title">
-            <h2>Gallery</h2>
-            <p>Explore the world of motorcycling.</p>
-        </div>
-
-        <div class="gallery">
-
-            <div class="image-slot" data-file="gallery1.jpg" onclick="openImagePicker(this)">
-                <img alt="Gallery image 1">
-                <div class="image-slot-placeholder">
-                    <strong>Click to Add Image</strong>
-                    <span>gallery1.jpg</span>
-                </div>
-                <div class="image-slot-uploading">Uploading...</div>
-                <input type="file" accept="image/*" onchange="uploadImage(this)">
-            </div>
-
-            <div class="image-slot" data-file="gallery2.jpg" onclick="openImagePicker(this)">
-                <img alt="Gallery image 2">
-                <div class="image-slot-placeholder">
-                    <strong>Click to Add Image</strong>
-                    <span>gallery2.jpg</span>
-                </div>
-                <div class="image-slot-uploading">Uploading...</div>
-                <input type="file" accept="image/*" onchange="uploadImage(this)">
-            </div>
-
-            <div class="image-slot" data-file="gallery3.jpg" onclick="openImagePicker(this)">
-                <img alt="Gallery image 3">
-                <div class="image-slot-placeholder">
-                    <strong>Click to Add Image</strong>
-                    <span>gallery3.jpg</span>
-                </div>
-                <div class="image-slot-uploading">Uploading...</div>
-                <input type="file" accept="image/*" onchange="uploadImage(this)">
-            </div>
-
-            <div class="image-slot" data-file="gallery4.jpg" onclick="openImagePicker(this)">
-                <img alt="Gallery image 4">
-                <div class="image-slot-placeholder">
-                    <strong>Click to Add Image</strong>
-                    <span>gallery4.jpg</span>
-                </div>
-                <div class="image-slot-uploading">Uploading...</div>
-                <input type="file" accept="image/*" onchange="uploadImage(this)">
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TEST RIDE -->
-    <section class="test-ride" id="test">
-
-        <div class="section-title">
-            <h2>Book a Test Ride</h2>
-            <p>Experience the motorcycle for yourself.</p>
-        </div>
-
-        <form class="form" onsubmit="bookRide(event)">
-
-            <div class="form-group">
-                <label>Your Name</label>
-                <input type="text" placeholder="Enter your name" required>
-            </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" required>
-            </div>
-
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" placeholder="Enter your phone number" required>
-            </div>
-
-            <div class="form-group">
-                <label>Select Motorcycle</label>
-
-                <select required>
-                    <option value="">Choose a motorcycle</option>
-                    <option>Classic 350</option>
-                    <option>Hunter 350</option>
-                    <option>Himalayan</option>
-                </select>
-
-            </div>
-
-            <div class="form-group">
-                <label>Preferred Date</label>
-                <input type="date" required>
-            </div>
-
-            <div class="form-group">
-                <label>Message</label>
-                <textarea placeholder="Any additional message..."></textarea>
-            </div>
-
-            <button type="submit" class="btn">
-                Book Test Ride
-            </button>
-
-        </form>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="contact">
-
-        <div class="section-title">
-            <h2>Contact Us</h2>
-            <p>Have questions? Get in touch with us.</p>
-        </div>
-
-        <p>📍 Gaya, Bihar</p>
-        <p>📞 +91 98765 43210</p>
-        <p>✉️ info@royalriders.example</p>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
         <p>
-            © 2026 <strong>Royal Riders</strong> | Student Website Project
+            Find the motorcycle that matches your journey.
         </p>
 
-        <p style="margin-top:10px;">
-            *Prices and specifications shown are for demonstration purposes.
+    </div>
+
+
+    <div class="bike-grid">
+
+
+        <!-- CLASSIC -->
+
+        <div class="bike-card">
+
+            <div class="bike-image">
+
+                <img
+                    src="images/classic350.jpg"
+                    alt="Classic 350"
+                >
+
+            </div>
+
+            <div class="bike-info">
+
+                <h3>Classic 350</h3>
+
+                <p>
+                    Timeless styling with a comfortable
+                    and refined riding experience.
+                </p>
+
+                <div class="price">
+                    ₹1.93 Lakh*
+                </div>
+
+                <a href="#test" class="btn">
+                    Test Ride
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HUNTER -->
+
+        <div class="bike-card">
+
+            <div class="bike-image">
+
+                <img
+                    src="images/hunter350.jpg"
+                    alt="Hunter 350"
+                >
+
+            </div>
+
+            <div class="bike-info">
+
+                <h3>Hunter 350</h3>
+
+                <p>
+                    A modern roadster designed for
+                    urban adventures and everyday riding.
+                </p>
+
+                <div class="price">
+                    ₹1.50 Lakh*
+                </div>
+
+                <a href="#test" class="btn">
+                    Test Ride
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HIMALAYAN -->
+
+        <div class="bike-card">
+
+            <div class="bike-image">
+
+                <img
+                    src="images/himalayan.jpg"
+                    alt="Himalayan"
+                >
+
+            </div>
+
+            <div class="bike-info">
+
+                <h3>Himalayan</h3>
+
+                <p>
+                    Built for adventure, exploration
+                    and challenging roads.
+                </p>
+
+                <div class="price">
+                    ₹2.85 Lakh*
+                </div>
+
+                <a href="#test" class="btn">
+                    Test Ride
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMPARE
+========================= -->
+
+<section class="compare" id="compare">
+
+    <div class="section-title">
+
+        <h2>Compare <span>Bikes</span></h2>
+
+        <p>
+            Compare important specifications.
         </p>
-    </footer>
+
+    </div>
 
 
-    <!-- JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <div class="table-container">
 
-    <script>
+        <table>
 
-        const SUPABASE_URL = "https://dcvwsccpvoaglmdrnrlp.supabase.co";
-        const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY";
-        const STORAGE_BUCKET = "ROYAL-RIDERS12";
+            <tr>
+                <th>Specification</th>
+                <th>Classic 350</th>
+                <th>Hunter 350</th>
+                <th>Himalayan</th>
+            </tr>
 
-        const supabaseClient = supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+            <tr>
+                <td>Engine</td>
+                <td>349 cc</td>
+                <td>349 cc</td>
+                <td>452 cc</td>
+            </tr>
 
-        function getPublicImageUrl(fileName) {
-            return supabaseClient.storage
-                .from(STORAGE_BUCKET)
-                .getPublicUrl(fileName).data.publicUrl;
-        }
+            <tr>
+                <td>Power</td>
+                <td>20.2 HP</td>
+                <td>20.2 HP</td>
+                <td>40 HP</td>
+            </tr>
 
-        async function loadSavedImages() {
+            <tr>
+                <td>Transmission</td>
+                <td>5 Speed</td>
+                <td>5 Speed</td>
+                <td>6 Speed</td>
+            </tr>
 
-            document.querySelectorAll(".image-slot").forEach((slot) => {
+            <tr>
+                <td>Type</td>
+                <td>Classic</td>
+                <td>Roadster</td>
+                <td>Adventure</td>
+            </tr>
 
-                const fileName = slot.dataset.file;
-                const image = slot.querySelector("img");
+        </table>
 
-                image.onload = () => slot.classList.add("has-image");
-                image.onerror = () => slot.classList.remove("has-image");
+    </div>
 
-                image.src = getPublicImageUrl(fileName) + "?t=" + Date.now();
+</section>
 
-            });
 
-        }
+<!-- =========================
+     GALLERY
+========================= -->
 
-        async function openImagePicker(slot) {
+<section class="gallery-section" id="gallery">
 
-            const { data: { session } } =
-                await supabaseClient.auth.getSession();
+    <div class="section-title">
 
-            if (!session) {
+        <h2>Rider <span>Gallery</span></h2>
 
-                const email = prompt("Enter your Supabase admin email:");
-                if (!email) return;
+        <p>
+            Explore the world of motorcycling.
+        </p>
 
-                const password = prompt("Enter your Supabase password:");
-                if (!password) return;
+    </div>
 
-                const { error } =
-                    await supabaseClient.auth.signInWithPassword({
-                        email: email,
-                        password: password
-                    });
 
-                if (error) {
-                    alert("Login failed: " + error.message);
-                    return;
-                }
+    <div class="gallery">
 
-            }
 
-            slot.querySelector('input[type="file"]').click();
+        <div class="gallery-item">
+            <img
+                src="images/gallery1.jpg"
+                alt="Royal Riders gallery"
+            >
+        </div>
 
-        }
 
-        async function uploadImage(input) {
+        <div class="gallery-item">
+            <img
+                src="images/gallery2.jpg"
+                alt="Royal Riders gallery"
+            >
+        </div>
 
-            const file = input.files[0];
-            if (!file) return;
 
-            const slot = input.closest(".image-slot");
-            const fileName = slot.dataset.file;
+        <div class="gallery-item">
+            <img
+                src="images/gallery3.jpg"
+                alt="Royal Riders gallery"
+            >
+        </div>
 
-            slot.classList.add("uploading");
 
-            try {
+        <div class="gallery-item">
+            <img
+                src="images/gallery4.jpg"
+                alt="Royal Riders gallery"
+            >
+        </div>
 
-                const { data: { session } } =
-                    await supabaseClient.auth.getSession();
 
-                if (!session) {
-                    throw new Error("Please log in first.");
-                }
+    </div>
 
-                const { error } = await supabaseClient.storage
-                    .from(STORAGE_BUCKET)
-                    .upload(fileName, file, {
-                        upsert: true,
-                        cacheControl: "3600"
-                    });
+</section>
 
-                if (error) throw error;
 
-                const image = slot.querySelector("img");
-                image.src = getPublicImageUrl(fileName) + "?t=" + Date.now();
+<!-- =========================
+     TEST RIDE
+========================= -->
 
-                image.onload = () => slot.classList.add("has-image");
+<section class="test" id="test">
 
-                alert("Image uploaded successfully!");
+    <div class="section-title">
 
-            } catch (error) {
+        <h2>Book a <span>Test Ride</span></h2>
 
-                alert("Upload failed: " + error.message);
+        <p>
+            Experience the motorcycle for yourself.
+        </p>
 
-            } finally {
+    </div>
 
-                slot.classList.remove("uploading");
-                input.value = "";
 
-            }
+    <form
+        class="form"
+        onsubmit="bookRide(event)"
+    >
 
-        }
+        <div class="form-group">
 
-        function bookRide(event) {
+            <label>Your Name</label>
 
-            event.preventDefault();
+            <input
+                type="text"
+                placeholder="Enter your name"
+                required
+            >
 
-            alert(
-                "Thank you! Your test ride request has been submitted."
-            );
+        </div>
 
-        }
 
-        loadSavedImages();
+        <div class="form-group">
 
-    </script>
+            <label>Email</label>
+
+            <input
+                type="email"
+                placeholder="Enter your email"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                placeholder="Enter your phone number"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Select Motorcycle</label>
+
+            <select required>
+
+                <option value="">
+                    Choose a motorcycle
+                </option>
+
+                <option>
+                    Classic 350
+                </option>
+
+                <option>
+                    Hunter 350
+                </option>
+
+                <option>
+                    Himalayan
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Preferred Date</label>
+
+            <input
+                type="date"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Message</label>
+
+            <textarea
+                placeholder="Any additional message..."
+            ></textarea>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="btn"
+        >
+            Book Test Ride
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+    <div class="section-title">
+
+        <h2>Contact <span>Us</span></h2>
+
+        <p>
+            Have questions? Get in touch with us.
+        </p>
+
+    </div>
+
+    <p>📍 Gaya, Bihar</p>
+
+    <p>📞 +91 98765 43210</p>
+
+    <p>✉️ info@royalriders.example</p>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026
+        <strong>Royal Riders</strong>
+        | Student Website Project
+    </p>
+
+    <p style="margin-top:10px;">
+        *Prices and specifications shown are for demonstration purposes.
+    </p>
+
+</footer>
+
+
+<script>
+
+function bookRide(event){
+
+    event.preventDefault();
+
+    alert(
+        "Thank you! Your test ride request has been submitted."
+    );
+
+}
+
+</script>
 
 </body>
 </html>
