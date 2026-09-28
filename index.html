@@ -697,7 +697,7 @@ footer strong {
         padding: 25px;
     }
 }
-        
+
 /* =========================
    MANUAL IMAGE SLOTS
 ========================= */
@@ -796,7 +796,7 @@ footer strong {
     }
 }
 
-        </style>
+</style>
 </head>
 
 <body>
@@ -850,7 +850,7 @@ footer strong {
 
         <div class="about-container">
 
-            <div class="image-slot" data-file="about.jpg" onclick="openImagePicker(this)">
+            <div class="image-slot" data-file="about.jpg" onclick="openImagePicker(this, event)">
                 <img alt="Royal Riders image">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -893,7 +893,7 @@ footer strong {
         <div class="bike-grid">
 
             <div class="bike-card">
-                <div class="image-slot" data-file="classic350.jpg" onclick="openImagePicker(this)">
+                <div class="image-slot" data-file="classic350.jpg" onclick="openImagePicker(this, event)">
                     <img alt="Classic 350">
                     <div class="image-slot-placeholder">
                         <strong>Click to Add Image</strong>
@@ -918,7 +918,7 @@ footer strong {
 
 
             <div class="bike-card">
-                <div class="image-slot" data-file="hunter350.jpg" onclick="openImagePicker(this)">
+                <div class="image-slot" data-file="hunter350.jpg" onclick="openImagePicker(this, event)">
                     <img alt="Hunter 350">
                     <div class="image-slot-placeholder">
                         <strong>Click to Add Image</strong>
@@ -943,7 +943,7 @@ footer strong {
 
 
             <div class="bike-card">
-                <div class="image-slot" data-file="himalayan.jpg" onclick="openImagePicker(this)">
+                <div class="image-slot" data-file="himalayan.jpg" onclick="openImagePicker(this, event)">
                     <img alt="Himalayan">
                     <div class="image-slot-placeholder">
                         <strong>Click to Add Image</strong>
@@ -1033,7 +1033,7 @@ footer strong {
 
         <div class="gallery">
 
-            <div class="image-slot" data-file="gallery1.jpg" onclick="openImagePicker(this)">
+            <div class="image-slot" data-file="gallery1.jpg" onclick="openImagePicker(this, event)">
                 <img alt="Gallery image 1">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1043,7 +1043,7 @@ footer strong {
                 <input type="file" accept="image/*" onchange="uploadImage(this)">
             </div>
 
-            <div class="image-slot" data-file="gallery2.jpg" onclick="openImagePicker(this)">
+            <div class="image-slot" data-file="gallery2.jpg" onclick="openImagePicker(this, event)">
                 <img alt="Gallery image 2">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1053,7 +1053,7 @@ footer strong {
                 <input type="file" accept="image/*" onchange="uploadImage(this)">
             </div>
 
-            <div class="image-slot" data-file="gallery3.jpg" onclick="openImagePicker(this)">
+            <div class="image-slot" data-file="gallery3.jpg" onclick="openImagePicker(this, event)">
                 <img alt="Gallery image 3">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1063,7 +1063,7 @@ footer strong {
                 <input type="file" accept="image/*" onchange="uploadImage(this)">
             </div>
 
-            <div class="image-slot" data-file="gallery4.jpg" onclick="openImagePicker(this)">
+            <div class="image-slot" data-file="gallery4.jpg" onclick="openImagePicker(this, event)">
                 <img alt="Gallery image 4">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1197,7 +1197,23 @@ footer strong {
 
         }
 
-        async function openImagePicker(slot) {
+
+        /* =========================
+           FIXED IMAGE PICKER
+        ========================= */
+
+        async function openImagePicker(slot, event) {
+
+            /*
+             * IMPORTANT:
+             * If the click came from the hidden file input,
+             * do nothing. This prevents the infinite click loop
+             * that was freezing the webpage.
+             */
+
+            if (event && event.target.type === "file") {
+                return;
+            }
 
             const { data: { session } } =
                 await supabaseClient.auth.getSession();
@@ -1223,82 +1239,92 @@ footer strong {
 
             }
 
-            slot.querySelector('input[type="file"]').click();
+            const fileInput =
+                slot.querySelector('input[type="file"]');
 
-        }
-async function uploadImage(input) {
-
-    const file = input.files[0];
-    if (!file) return;
-
-    const slot = input.closest(".image-slot");
-    const fileName = slot.dataset.file;
-
-    if (!slot || !fileName) {
-        alert("Image slot error.");
-        return;
-    }
-
-    if (file.size > 10 * 1024 * 1024) {
-        alert("Please choose an image smaller than 10 MB.");
-        input.value = "";
-        return;
-    }
-
-    slot.classList.add("uploading");
-
-    try {
-
-        const { data, error: sessionError } =
-            await supabaseClient.auth.getSession();
-
-        if (sessionError) {
-            throw sessionError;
+            fileInput.click();
         }
 
-        if (!data.session) {
-            throw new Error("Please log in first.");
-        }
 
-        const { error: uploadError } =
-            await supabaseClient.storage
-                .from(STORAGE_BUCKET)
-                .upload(
-                    fileName,
-                    file,
-                    {
-                        upsert: true,
-                        cacheControl: "3600"
-                    }
+        /* =========================
+           UPLOAD IMAGE
+        ========================= */
+
+        async function uploadImage(input) {
+
+            const file = input.files[0];
+
+            if (!file) return;
+
+            const slot =
+                input.closest(".image-slot");
+
+            const fileName =
+                slot.dataset.file;
+
+            slot.classList.add("uploading");
+
+            try {
+
+                const { data: { session } } =
+                    await supabaseClient.auth.getSession();
+
+                if (!session) {
+                    throw new Error("Please log in first.");
+                }
+
+                const { error } =
+                    await supabaseClient.storage
+                        .from(STORAGE_BUCKET)
+                        .upload(
+                            fileName,
+                            file,
+                            {
+                                upsert: true,
+                                cacheControl: "3600"
+                            }
+                        );
+
+                if (error) {
+                    throw error;
+                }
+
+                const image =
+                    slot.querySelector("img");
+
+                image.src =
+                    getPublicImageUrl(fileName)
+                    + "?t="
+                    + Date.now();
+
+                image.onload =
+                    () => slot.classList.add("has-image");
+
+                alert(
+                    "Image uploaded successfully!"
                 );
 
-        if (uploadError) {
-            throw uploadError;
+            } catch (error) {
+
+                alert(
+                    "Upload failed: "
+                    + error.message
+                );
+
+            } finally {
+
+                slot.classList.remove("uploading");
+
+                input.value = "";
+
+            }
+
         }
 
-        const image = slot.querySelector("img");
 
-        image.onload = () => {
-            slot.classList.add("has-image");
-        };
-
-        image.src =
-            getPublicImageUrl(fileName) +
-            "?t=" +
-            Date.now();
-
-    } catch (error) {
-
-        alert("Upload failed: " + error.message);
-
-    } finally {
-
-        slot.classList.remove("uploading");
-        input.value = "";
-
-    }
-
-}
+        /* =========================
+           TEST RIDE
+        ========================= */
 
         function bookRide(event) {
 
@@ -1309,6 +1335,11 @@ async function uploadImage(input) {
             );
 
         }
+
+
+        /* =========================
+           LOAD SAVED IMAGES
+        ========================= */
 
         loadSavedImages();
 
