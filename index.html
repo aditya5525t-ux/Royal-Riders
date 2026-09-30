@@ -15,20 +15,20 @@
 }
 
 :root {
-    --bg: #07111f;
-    --bg2: #0b1b2d;
-    --card: rgba(15, 31, 49, 0.92);
-    --blue: #12395b;
-    --orange: #ff9d00;
-    --orange2: #ff6a00;
+    --bg: #160812;
+    --bg2: #2a1020;
+    --card: rgba(48, 17, 35, 0.92);
+    --blue: #5a2140;
+    --orange: #ff6b9a;
+    --orange2: #d94f7d;
     --white: #f5f7fa;
-    --muted: #aab7c7;
-    --border: rgba(255, 157, 0, 0.25);
+    --muted: #d7b9c6;
+    --border: rgba(255, 107, 154, 0.25);
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg);
+    background: linear-gradient(135deg, #160812, #2a1020, #1d0b17);
     color: var(--white);
 }
 
@@ -47,10 +47,10 @@ nav {
 
     padding: 18px 7%;
 
-    background: rgba(4, 13, 24, 0.88);
+    background: rgba(24, 7, 16, 0.88);
     backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(255, 157, 0, 0.18);
+    border-bottom: 1px solid rgba(255, 107, 154, 0.18);
 }
 
 .logo {
@@ -70,7 +70,7 @@ nav ul {
 }
 
 nav a {
-    color: #e9eef5;
+    color: #f8eaf0;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
@@ -143,7 +143,7 @@ nav a:hover {
 
 .hero h1 span {
     color: var(--orange);
-    text-shadow: 0 0 25px rgba(255, 157, 0, 0.35);
+    text-shadow: 0 0 25px rgba(255, 107, 154, 0.35);
 }
 
 .hero p {
@@ -167,7 +167,7 @@ nav a:hover {
         var(--orange2)
     );
 
-    color: #07111f;
+    color: #160812;
 
     padding: 15px 30px;
 
@@ -182,7 +182,7 @@ nav a:hover {
     cursor: pointer;
 
     box-shadow:
-        0 8px 25px rgba(255, 106, 0, 0.25);
+        0 8px 25px rgba(217, 79, 125, 0.25);
 
     transition: 0.3s;
 }
@@ -191,7 +191,7 @@ nav a:hover {
     transform: translateY(-4px) scale(1.03);
 
     box-shadow:
-        0 12px 35px rgba(255, 157, 0, 0.45);
+        0 12px 35px rgba(255, 107, 154, 0.35);
 }
 
 /* =========================
@@ -248,8 +248,8 @@ section {
     background:
         linear-gradient(
             135deg,
-            #07111f,
-            #0b1b2d
+            #160812,
+            #2a1020
         );
 }
 
@@ -304,7 +304,7 @@ section {
 ========================= */
 
 #bikes {
-    background: #081523;
+    background: #210d1a;
 }
 
 .bike-grid {
@@ -320,15 +320,15 @@ section {
     background:
         linear-gradient(
             145deg,
-            rgba(20, 42, 65, 0.95),
-            rgba(7, 17, 31, 0.98)
+            rgba(63, 24, 45, 0.95),
+            rgba(22, 8, 18, 0.98)
         );
 
     border-radius: 20px;
 
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 190, 210, 0.10);
 
     box-shadow:
         0 15px 40px rgba(0,0,0,0.3);
@@ -342,7 +342,7 @@ section {
     border-color: var(--orange);
 
     box-shadow:
-        0 20px 50px rgba(255,157,0,0.16);
+        0 20px 50px rgba(255, 107, 154, 0.14);
 }
 
 .bike-card img {
@@ -393,8 +393,8 @@ section {
     background:
         linear-gradient(
             135deg,
-            #0b1b2d,
-            #07111f
+            #2a1020,
+            #160812
         );
 }
 
@@ -403,7 +403,7 @@ section {
 
     border-radius: 18px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 190, 210, 0.10);
 
     box-shadow:
         0 20px 50px rgba(0,0,0,0.3);
@@ -414,14 +414,14 @@ table {
 
     border-collapse: collapse;
 
-    background: rgba(10,25,40,0.9);
+    background: rgba(35, 12, 25, 0.9);
 }
 
 th,
 td {
     padding: 20px;
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 190, 210, 0.10);
 
     text-align: center;
 }
@@ -434,17 +434,17 @@ th {
             var(--orange2)
         );
 
-    color: #07111f;
+    color: #160812;
 
     font-weight: 900;
 }
 
 td {
-    color: #d9e2ec;
+    color: #f1dce5;
 }
 
 tr:hover td {
-    background: rgba(255,157,0,0.05);
+    background: rgba(255, 107, 154, 0.05);
 }
 
 /* =========================
@@ -469,7 +469,7 @@ tr:hover td {
 
     border-radius: 18px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 190, 210, 0.10);
 
     transition: 0.5s;
 }
@@ -480,7 +480,7 @@ tr:hover td {
     border-color: var(--orange);
 
     box-shadow:
-        0 15px 35px rgba(255,157,0,0.2);
+        0 15px 35px rgba(255, 107, 154, 0.18);
 }
 
 /* =========================
@@ -490,8 +490,8 @@ tr:hover td {
 .test-ride {
     background:
         linear-gradient(
-            rgba(4,13,24,0.88),
-            rgba(4,13,24,0.94)
+            rgba(24, 7, 16, 0.88),
+            rgba(20, 6, 14, 0.94)
         ),
         url("https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=2000&q=90");
 
@@ -508,7 +508,7 @@ tr:hover td {
     margin: auto;
 
     background:
-        rgba(8, 23, 38, 0.82);
+        rgba(35, 12, 25, 0.82);
 
     backdrop-filter: blur(18px);
 
@@ -516,7 +516,7 @@ tr:hover td {
 
     border-radius: 24px;
 
-    border: 1px solid rgba(255,157,0,0.2);
+    border: 1px solid rgba(255, 107, 154, 0.18);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,0.5);
@@ -533,7 +533,7 @@ tr:hover td {
 
     font-weight: bold;
 
-    color: #e9eef5;
+    color: #f8eaf0;
 }
 
 .form input,
@@ -547,7 +547,7 @@ tr:hover td {
 
     color: white;
 
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255, 190, 210, 0.14);
 
     border-radius: 10px;
 
@@ -581,8 +581,8 @@ tr:hover td {
     background:
         linear-gradient(
             135deg,
-            #07111f,
-            #102c46
+            #160812,
+            #3a1528
         );
 }
 
@@ -599,15 +599,15 @@ tr:hover td {
 ========================= */
 
 footer {
-    background: #040b13;
+    background: #11050b;
 
     text-align: center;
 
     padding: 35px;
 
-    color: #7f8c9b;
+    color: #b996a5;
 
-    border-top: 1px solid rgba(255,157,0,0.15);
+    border-top: 1px solid rgba(255, 107, 154, 0.15);
 }
 
 footer strong {
@@ -697,7 +697,7 @@ footer strong {
         padding: 25px;
     }
 }
-
+        
 /* =========================
    MANUAL IMAGE SLOTS
 ========================= */
@@ -763,7 +763,7 @@ footer strong {
 }
 
 .image-slot:hover .image-slot-placeholder {
-    background: rgba(255,157,0,0.08);
+    background: rgba(255, 107, 154, 0.08);
 }
 
 .image-slot input[type="file"] {
@@ -796,6 +796,10 @@ footer strong {
     }
 }
 
+        
+<style>
+.buy-section{text-align:center;background:linear-gradient(135deg,#180914,#2a1020);padding:90px 7%;}.buy-section h2{font-size:48px;margin-bottom:12px}.buy-section p{color:#c9aab9;margin-bottom:24px}.buy-bike-btn{background:linear-gradient(135deg,#e83e73,#a51d52);color:white;border:0;border-radius:50px;padding:16px 38px;font-size:18px;font-weight:900;cursor:pointer;box-shadow:0 10px 30px rgba(232,62,115,.25)}.demo-note{font-size:13px!important;margin-top:15px!important}.payment-modal{display:none;position:fixed;inset:0;background:rgba(5,2,6,.78);backdrop-filter:blur(10px);z-index:5000;align-items:center;justify-content:center;padding:20px}.payment-modal.show{display:flex}.payment-box{width:min(620px,100%);max-height:90vh;overflow:auto;background:#180d17;border:1px solid rgba(232,62,115,.35);border-radius:24px;padding:32px;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.55)}.payment-close{position:absolute;right:18px;top:12px;background:none;border:0;color:white;font-size:34px;cursor:pointer}.payment-step{display:none}.payment-step.active{display:block}.payment-box h2{text-align:center;margin-bottom:8px}.payment-subtitle{text-align:center;color:#c9aab9;margin-bottom:24px}.payment-box label{display:block;font-weight:bold;margin:16px 0 8px}.payment-box select,.payment-box input{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#281522;color:white;outline:none}.buy-price{font-size:25px;font-weight:900;color:#f36b94;text-align:center;margin:20px}.payment-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}.payment-method{padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#24131f;color:white;cursor:pointer;text-align:center}.payment-method.selected{border-color:#e83e73;background:rgba(232,62,115,.14)}.payment-actions{display:flex;gap:12px;margin-top:25px}.payment-actions button{flex:1}.order-success{text-align:center;padding:20px}.success-icon{font-size:55px;margin-bottom:10px}.order-id{color:#f36b94;font-weight:900;margin:12px 0}@media(max-width:600px){.buy-section h2{font-size:36px}.payment-methods{grid-template-columns:1fr}.payment-box{padding:24px}}
+</style>
 </style>
 </head>
 
@@ -850,7 +854,7 @@ footer strong {
 
         <div class="about-container">
 
-            <div class="image-slot" data-file="about.jpg" onclick="openImagePicker(this, event)">
+            <div class="image-slot" data-file="about.jpg" onclick="openImagePicker(this)">
                 <img alt="Royal Riders image">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -893,7 +897,7 @@ footer strong {
         <div class="bike-grid">
 
             <div class="bike-card">
-                <div class="image-slot" data-file="classic350.jpg" onclick="openImagePicker(this, event)">
+                <div class="image-slot" data-file="classic350.jpg" onclick="openImagePicker(this)">
                     <img alt="Classic 350">
                     <div class="image-slot-placeholder">
                         <strong>Click to Add Image</strong>
@@ -918,7 +922,7 @@ footer strong {
 
 
             <div class="bike-card">
-                <div class="image-slot" data-file="hunter350.jpg" onclick="openImagePicker(this, event)">
+                <div class="image-slot" data-file="hunter350.jpg" onclick="openImagePicker(this)">
                     <img alt="Hunter 350">
                     <div class="image-slot-placeholder">
                         <strong>Click to Add Image</strong>
@@ -943,7 +947,7 @@ footer strong {
 
 
             <div class="bike-card">
-                <div class="image-slot" data-file="himalayan.jpg" onclick="openImagePicker(this, event)">
+                <div class="image-slot" data-file="himalayan.jpg" onclick="openImagePicker(this)">
                     <img alt="Himalayan">
                     <div class="image-slot-placeholder">
                         <strong>Click to Add Image</strong>
@@ -1033,7 +1037,7 @@ footer strong {
 
         <div class="gallery">
 
-            <div class="image-slot" data-file="gallery1.jpg" onclick="openImagePicker(this, event)">
+            <div class="image-slot" data-file="gallery1.jpg" onclick="openImagePicker(this)">
                 <img alt="Gallery image 1">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1043,7 +1047,7 @@ footer strong {
                 <input type="file" accept="image/*" onchange="uploadImage(this)">
             </div>
 
-            <div class="image-slot" data-file="gallery2.jpg" onclick="openImagePicker(this, event)">
+            <div class="image-slot" data-file="gallery2.jpg" onclick="openImagePicker(this)">
                 <img alt="Gallery image 2">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1053,7 +1057,7 @@ footer strong {
                 <input type="file" accept="image/*" onchange="uploadImage(this)">
             </div>
 
-            <div class="image-slot" data-file="gallery3.jpg" onclick="openImagePicker(this, event)">
+            <div class="image-slot" data-file="gallery3.jpg" onclick="openImagePicker(this)">
                 <img alt="Gallery image 3">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1063,7 +1067,7 @@ footer strong {
                 <input type="file" accept="image/*" onchange="uploadImage(this)">
             </div>
 
-            <div class="image-slot" data-file="gallery4.jpg" onclick="openImagePicker(this, event)">
+            <div class="image-slot" data-file="gallery4.jpg" onclick="openImagePicker(this)">
                 <img alt="Gallery image 4">
                 <div class="image-slot-placeholder">
                     <strong>Click to Add Image</strong>
@@ -1134,7 +1138,43 @@ footer strong {
     </section>
 
 
-    <!-- CONTACT -->
+    
+<!-- =========================
+     BUY MOTORCYCLE DEMO
+========================= -->
+<section class="buy-section" id="buy">
+ <h2>Buy Your Motorcycle</h2><p>Choose your motorcycle and complete our demonstration checkout.</p>
+ <button class="buy-bike-btn" onclick="openPayment()">🏍️ Buy Now</button>
+ <p class="demo-note">Demonstration only — no real payment or order is processed.</p>
+</section>
+
+<div class="payment-modal" id="paymentModal">
+ <div class="payment-box">
+  <button class="payment-close" onclick="closePayment()">×</button>
+  <div class="payment-step active" id="paymentStep1">
+   <h2>Choose Your Bike</h2><p class="payment-subtitle">Select the motorcycle and version you want.</p>
+   <label>Motorcycle</label><select id="buyBike" onchange="updateBuyPrice()"><option value="Classic 350" data-price="193000">Classic 350</option><option value="Hunter 350" data-price="150000">Hunter 350</option><option value="Himalayan" data-price="285000">Himalayan</option></select>
+   <label>Version</label><select id="buyVersion"><option>Standard</option><option>Premium</option><option>Top Edition</option></select>
+   <div class="buy-price" id="buyPrice">₹1,93,000</div><button class="btn" style="width:100%" onclick="paymentStep(2)">Continue</button>
+  </div>
+  <div class="payment-step" id="paymentStep2">
+   <h2>Payment Method</h2><p class="payment-subtitle">Choose how you would like to pay.</p>
+   <div class="payment-methods"><div class="payment-method" onclick="selectPayment(this,'UPI')">📱 UPI</div><div class="payment-method" onclick="selectPayment(this,'Card')">💳 Card</div><div class="payment-method" onclick="selectPayment(this,'Net Banking')">🏦 Net Banking</div><div class="payment-method" onclick="selectPayment(this,'Cash on Delivery')">💵 Cash on Delivery</div></div>
+   <div class="payment-actions"><button class="btn" onclick="paymentStep(1)">Back</button><button class="btn" onclick="paymentStep(3)">Continue</button></div>
+  </div>
+  <div class="payment-step" id="paymentStep3">
+   <h2>Your Details</h2><p class="payment-subtitle">Enter details for this demonstration order.</p>
+   <label>Full Name</label><input id="orderName" type="text" placeholder="Your name" required>
+   <label>Email</label><input id="orderEmail" type="email" placeholder="you@example.com" required>
+   <label>Phone</label><input id="orderPhone" type="tel" placeholder="Your phone number" required>
+   <label>Delivery Address</label><input id="orderAddress" type="text" placeholder="Your address" required>
+   <div class="payment-actions"><button class="btn" onclick="paymentStep(2)">Back</button><button class="btn" onclick="confirmDemoOrder()">Place Demo Order</button></div>
+  </div>
+  <div class="payment-step" id="paymentStep4"><div class="order-success"><div class="success-icon">✅</div><h2>Order Confirmed!</h2><p class="payment-subtitle">Your demonstration order has been successfully created.</p><div class="order-id" id="orderId"></div><p id="orderSummary" style="color:#c9aab9;line-height:1.7"></p><button class="btn" onclick="closePayment()">Done</button></div></div>
+ </div>
+</div>
+
+<!-- CONTACT -->
     <section class="contact">
 
         <div class="section-title">
@@ -1162,7 +1202,16 @@ footer strong {
 
 
     <!-- JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+function openPayment(){document.getElementById('paymentModal').classList.add('show');paymentStep(1);}
+function closePayment(){document.getElementById('paymentModal').classList.remove('show');}
+function paymentStep(n){document.querySelectorAll('.payment-step').forEach(x=>x.classList.remove('active'));document.getElementById('paymentStep'+n).classList.add('active');}
+function updateBuyPrice(){const o=document.getElementById('buyBike').selectedOptions[0];document.getElementById('buyPrice').textContent='₹'+Number(o.dataset.price).toLocaleString('en-IN');}
+let selectedPayment='';
+function selectPayment(el,method){document.querySelectorAll('.payment-method').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');selectedPayment=method;}
+function confirmDemoOrder(){const name=document.getElementById('orderName').value.trim(),email=document.getElementById('orderEmail').value.trim(),phone=document.getElementById('orderPhone').value.trim(),address=document.getElementById('orderAddress').value.trim();if(!name||!email||!phone||!address){alert('Please fill in all your details.');return;}if(!selectedPayment){alert('Please select a payment method.');return;}const bike=document.getElementById('buyBike').value,version=document.getElementById('buyVersion').value,price=document.getElementById('buyPrice').textContent;const id='RR-'+Math.floor(100000+Math.random()*900000);document.getElementById('orderId').textContent='Order ID: '+id;document.getElementById('orderSummary').innerHTML='Thank you, <strong>'+name.replace(/[<>]/g,'')+'</strong>!<br>'+bike+' — '+version+'<br>Total: '+price+'<br>Payment: '+selectedPayment+'<br><small>This is only a website demonstration. No payment was taken.</small>';paymentStep(4);}
+document.getElementById('paymentModal').addEventListener('click',e=>{if(e.target.id==='paymentModal')closePayment();});
+</script>
 
     <script>
 
@@ -1197,23 +1246,7 @@ footer strong {
 
         }
 
-
-        /* =========================
-           FIXED IMAGE PICKER
-        ========================= */
-
-        async function openImagePicker(slot, event) {
-
-            /*
-             * IMPORTANT:
-             * If the click came from the hidden file input,
-             * do nothing. This prevents the infinite click loop
-             * that was freezing the webpage.
-             */
-
-            if (event && event.target.type === "file") {
-                return;
-            }
+        async function openImagePicker(slot) {
 
             const { data: { session } } =
                 await supabaseClient.auth.getSession();
@@ -1239,92 +1272,82 @@ footer strong {
 
             }
 
-            const fileInput =
-                slot.querySelector('input[type="file"]');
-
-            fileInput.click();
-        }
-
-
-        /* =========================
-           UPLOAD IMAGE
-        ========================= */
-
-        async function uploadImage(input) {
-
-            const file = input.files[0];
-
-            if (!file) return;
-
-            const slot =
-                input.closest(".image-slot");
-
-            const fileName =
-                slot.dataset.file;
-
-            slot.classList.add("uploading");
-
-            try {
-
-                const { data: { session } } =
-                    await supabaseClient.auth.getSession();
-
-                if (!session) {
-                    throw new Error("Please log in first.");
-                }
-
-                const { error } =
-                    await supabaseClient.storage
-                        .from(STORAGE_BUCKET)
-                        .upload(
-                            fileName,
-                            file,
-                            {
-                                upsert: true,
-                                cacheControl: "3600"
-                            }
-                        );
-
-                if (error) {
-                    throw error;
-                }
-
-                const image =
-                    slot.querySelector("img");
-
-                image.src =
-                    getPublicImageUrl(fileName)
-                    + "?t="
-                    + Date.now();
-
-                image.onload =
-                    () => slot.classList.add("has-image");
-
-                alert(
-                    "Image uploaded successfully!"
-                );
-
-            } catch (error) {
-
-                alert(
-                    "Upload failed: "
-                    + error.message
-                );
-
-            } finally {
-
-                slot.classList.remove("uploading");
-
-                input.value = "";
-
-            }
+            slot.querySelector('input[type="file"]').click();
 
         }
+async function uploadImage(input) {
 
+    const file = input.files[0];
+    if (!file) return;
 
-        /* =========================
-           TEST RIDE
-        ========================= */
+    const slot = input.closest(".image-slot");
+    const fileName = slot.dataset.file;
+
+    if (!slot || !fileName) {
+        alert("Image slot error.");
+        return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+        alert("Please choose an image smaller than 10 MB.");
+        input.value = "";
+        return;
+    }
+
+    slot.classList.add("uploading");
+
+    try {
+
+        const { data, error: sessionError } =
+            await supabaseClient.auth.getSession();
+
+        if (sessionError) {
+            throw sessionError;
+        }
+
+        if (!data.session) {
+            throw new Error("Please log in first.");
+        }
+
+        const { error: uploadError } =
+            await supabaseClient.storage
+                .from(STORAGE_BUCKET)
+                .upload(
+                    fileName,
+                    file,
+                    {
+                        upsert: true,
+                        cacheControl: "3600"
+                    }
+                );
+
+        if (uploadError) {
+            throw uploadError;
+        }
+
+        const image = slot.querySelector("img");
+
+        image.onload = () => {
+            slot.classList.add("has-image");
+        };
+
+        image.src =
+            getPublicImageUrl(fileName) +
+            "?t=" +
+            Date.now();
+
+    } catch (error) {
+
+        alert("Upload failed: " + error.message);
+
+    } finally {
+
+        slot.classList.remove("uploading");
+        input.value = "";
+
+    }
+
+}
 
         function bookRide(event) {
 
@@ -1335,11 +1358,6 @@ footer strong {
             );
 
         }
-
-
-        /* =========================
-           LOAD SAVED IMAGES
-        ========================= */
 
         loadSavedImages();
 
