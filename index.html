@@ -1202,7 +1202,8 @@ footer strong {
 
 
     <!-- JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
 function openPayment(){document.getElementById('paymentModal').classList.add('show');paymentStep(1);}
 function closePayment(){document.getElementById('paymentModal').classList.remove('show');}
 function paymentStep(n){document.querySelectorAll('.payment-step').forEach(x=>x.classList.remove('active'));document.getElementById('paymentStep'+n).classList.add('active');}
